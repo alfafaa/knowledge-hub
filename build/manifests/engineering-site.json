@@ -1,0 +1,85 @@
+{
+  "counts": {
+    "catalog_only": 0,
+    "generated_catalog_pages": 4,
+    "staged": 0,
+    "total": 4
+  },
+  "display_name": "Alfafaa Knowledge Hub",
+  "items": [
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/02-architecture/system-design.md",
+      "id": "billing-system-design",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/02-architecture/system-design.md",
+      "stage_status": "generated-catalog-page",
+      "staged_content": "build/sites/engineering-site/content/03-projects/billing-modernization/02-architecture/system-design.md",
+      "title": "Billing System Design",
+      "type": "reference",
+      "visibility": "internal"
+    },
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table.md",
+      "id": "billing-adr-001-ledger-table",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/03-decisions/adr-001-use-ledger-table.md",
+      "stage_status": "generated-catalog-page",
+      "staged_content": "build/sites/engineering-site/content/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table.md",
+      "title": "Use Ledger Table For Charge Events",
+      "type": "adr",
+      "visibility": "internal"
+    },
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md",
+      "id": "billing-payment-recovery-runbook",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/05-operations/runbooks/payment-recovery.md",
+      "stage_status": "generated-catalog-page",
+      "staged_content": "build/sites/engineering-site/content/03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md",
+      "title": "Payment Recovery Runbook",
+      "type": "runbook",
+      "visibility": "internal"
+    },
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/_index.md",
+      "id": "billing-service-docs-index",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/_index.md",
+      "stage_status": "generated-catalog-page",
+      "staged_content": "build/sites/engineering-site/content/03-projects/billing-modernization/_index.md",
+      "title": "Billing Service Documentation",
+      "type": "guide",
+      "visibility": "internal"
+    }
+  ],
+  "publish_target": "engineering-site",
+  "site_content_root": "build/sites/engineering-site/content"
+}

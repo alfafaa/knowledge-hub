@@ -1,0 +1,58 @@
+repo_type: service
+repo_name: billing-service
+docs_version: 1
+
+defaults:
+  sync_mode: indexed-only
+  visibility: internal
+  audience: engineering
+  publish: false
+  publish_targets:
+    - engineering-site
+
+sync:
+  include:
+    - "docs/_index.md"
+    - "docs/02-architecture/**"
+    - "docs/03-decisions/**"
+    - "docs/05-operations/**"
+    - "docs/11-guides/**"
+  exclude:
+    - "docs/**/drafts/**"
+    - "docs/**/scratch/**"
+    - "docs/90-archive/**"
+  overrides:
+    "docs/11-guides/public/**":
+      sync_mode: mirrored
+      visibility: public
+      audience: public
+      publish: true
+      publish_targets:
+        - public-site
+    "docs/11-guides/internal/**":
+      sync_mode: mirrored
+      visibility: internal
+      audience: internal
+      publish: true
+      publish_targets:
+        - internal-site
+  destinations:
+    "docs/**":
+      hub_path: "hub/03-projects/billing-modernization/"
+      product: "billing"
+      project: "billing-modernization"
+    "docs/11-guides/public/**":
+      hub_path: "hub/06-support/public-kb/billing/"
+    "docs/11-guides/internal/**":
+      hub_path: "hub/06-support/internal-kb/billing/"
+
+approval:
+  required_for:
+    public: true
+    restricted: true
+    policy: true
+    security_sensitive: true
+
+ownership:
+  default_owner: team-billing
+  require_owner: true

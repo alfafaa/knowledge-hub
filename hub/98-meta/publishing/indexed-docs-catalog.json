@@ -1,0 +1,106 @@
+{
+  "items": [
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/02-architecture/system-design.md",
+      "id": "billing-system-design",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish": true,
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/02-architecture/system-design.md",
+      "title": "Billing System Design",
+      "type": "reference",
+      "visibility": "internal"
+    },
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table.md",
+      "id": "billing-adr-001-ledger-table",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish": true,
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/03-decisions/adr-001-use-ledger-table.md",
+      "title": "Use Ledger Table For Charge Events",
+      "type": "adr",
+      "visibility": "internal"
+    },
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md",
+      "id": "billing-payment-recovery-runbook",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish": true,
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/05-operations/runbooks/payment-recovery.md",
+      "title": "Payment Recovery Runbook",
+      "type": "runbook",
+      "visibility": "internal"
+    },
+    {
+      "action": "mirrored",
+      "audience": "internal",
+      "destination": "hub/06-support/internal-kb/billing/approval-workflow.md",
+      "id": "billing-internal-approval-workflow",
+      "product": null,
+      "project": null,
+      "publish": true,
+      "publish_targets": [
+        "internal-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/11-guides/internal/approval-workflow.md",
+      "title": "Billing Approval Workflow",
+      "type": "guide",
+      "visibility": "internal"
+    },
+    {
+      "action": "mirrored",
+      "audience": "public",
+      "destination": "hub/06-support/public-kb/billing/getting-started.md",
+      "id": "billing-public-getting-started",
+      "product": null,
+      "project": null,
+      "publish": true,
+      "publish_targets": [
+        "public-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/11-guides/public/getting-started.md",
+      "title": "Billing Getting Started",
+      "type": "guide",
+      "visibility": "public"
+    },
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/_index.md",
+      "id": "billing-service-docs-index",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish": true,
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/_index.md",
+      "title": "Billing Service Documentation",
+      "type": "guide",
+      "visibility": "internal"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "displayName": "Alfafaa Knowledge Hub",
+  "branch": "main",
+  "event": "push",
+  "targets": [
+    {
+      "target": "public-site",
+      "workspace": "quartz/workspaces/public-site",
+      "site_root": "build/rendered/public-site",
+      "generated_files": 18,
+      "content_summary": {
+        "catalog_only": 0,
+        "generated_catalog_pages": 0,
+        "staged": 1,
+        "total": 1
+      },
+      "environment": "production",
+      "allowed": false,
+      "requires_approval": true,
+      "reason": "public production deploy requires approval"
+    },
+    {
+      "target": "internal-site",
+      "workspace": "quartz/workspaces/internal-site",
+      "site_root": "build/rendered/internal-site",
+      "generated_files": 18,
+      "content_summary": {
+        "catalog_only": 0,
+        "generated_catalog_pages": 0,
+        "staged": 1,
+        "total": 1
+      },
+      "environment": "internal",
+      "allowed": true,
+      "requires_approval": false,
+      "reason": "internal deploy allowed on main"
+    },
+    {
+      "target": "engineering-site",
+      "workspace": "quartz/workspaces/engineering-site",
+      "site_root": "build/rendered/engineering-site",
+      "generated_files": 23,
+      "content_summary": {
+        "catalog_only": 0,
+        "generated_catalog_pages": 4,
+        "staged": 0,
+        "total": 4
+      },
+      "environment": "internal",
+      "allowed": true,
+      "requires_approval": false,
+      "reason": "internal deploy allowed on main"
+    },
+    {
+      "target": "admin-site",
+      "workspace": "quartz/workspaces/admin-site",
+      "site_root": "build/rendered/admin-site",
+      "generated_files": 14,
+      "content_summary": {
+        "catalog_only": 0,
+        "generated_catalog_pages": 0,
+        "staged": 0,
+        "total": 0
+      },
+      "environment": "internal",
+      "allowed": false,
+      "requires_approval": true,
+      "reason": "admin deploy requires approval"
+    }
+  ]
+}

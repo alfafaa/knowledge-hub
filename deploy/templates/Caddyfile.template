@@ -1,0 +1,15 @@
+{
+  auto_https off
+}
+
+internal.docs.local {
+  root * /srv/alfafaa-knowledge-hub/internal-site/current/content
+  file_server
+}
+
+engineering.docs.local {
+  root * /srv/alfafaa-knowledge-hub/engineering-site/current/content
+  file_server
+}
+
+# Add public and admin hosts later after approval and auth decisions.

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Alfafaa Knowledge Hub Internal</title>
+      <link>https://staging-internal.local</link>
+      <description>Last 10 notes on Alfafaa Knowledge Hub Internal</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>Billing Approval Workflow</title>
+    <link>https://staging-internal.local/06-support/internal-kb/billing/approval-workflow</link>
+    <guid>https://staging-internal.local/06-support/internal-kb/billing/approval-workflow</guid>
+    <description><![CDATA[ Billing Approval Workflow. ]]></description>
+    <pubDate>Sat, 04 Apr 2026 05:49:47 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

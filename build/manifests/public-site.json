@@ -1,0 +1,31 @@
+{
+  "counts": {
+    "catalog_only": 0,
+    "generated_catalog_pages": 0,
+    "staged": 1,
+    "total": 1
+  },
+  "display_name": "Alfafaa Knowledge Hub",
+  "items": [
+    {
+      "action": "mirrored",
+      "audience": "public",
+      "destination": "hub/06-support/public-kb/billing/getting-started.md",
+      "id": "billing-public-getting-started",
+      "product": null,
+      "project": null,
+      "publish_targets": [
+        "public-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/11-guides/public/getting-started.md",
+      "stage_status": "staged",
+      "staged_content": "build/sites/public-site/content/06-support/public-kb/billing/getting-started.md",
+      "title": "Billing Getting Started",
+      "type": "guide",
+      "visibility": "public"
+    }
+  ],
+  "publish_target": "public-site",
+  "site_content_root": "build/sites/public-site/content"
+}

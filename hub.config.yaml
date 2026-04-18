@@ -1,0 +1,23 @@
+display_name: Alfafaa Knowledge Hub
+content_root: hub
+templates_root: hub/99-templates
+default_docs_version: 1
+publish_targets:
+  - public-site
+  - internal-site
+  - engineering-site
+  - admin-site
+audiences:
+  - public
+  - internal
+  - engineering
+  - admin
+  - restricted
+visibilities:
+  - public
+  - internal
+  - restricted
+sync_modes:
+  - local-only
+  - indexed-only
+  - mirrored

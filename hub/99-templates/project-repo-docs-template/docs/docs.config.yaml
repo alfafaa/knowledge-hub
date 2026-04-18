@@ -1,0 +1,107 @@
+repo_type: service
+repo_name: sample-service
+docs_version: 1
+
+structure:
+  mandatory:
+    - 01-getting-started
+    - 02-architecture
+    - 03-decisions
+    - 04-development
+    - 05-operations
+    - 06-reference
+    - 07-release
+    - 90-archive
+  recommended:
+    - 00-overview
+    - 08-quality
+    - 09-knowledge
+  optional:
+    - 10-integrations
+    - 11-guides
+    - 98-meta
+
+defaults:
+  sync_mode: indexed-only
+  visibility: internal
+  audience: engineering
+  publish: false
+  publish_targets:
+    - engineering-site
+
+sync:
+  include:
+    - "docs/_index.md"
+    - "docs/02-architecture/**"
+    - "docs/03-decisions/**"
+    - "docs/05-operations/**"
+    - "docs/06-reference/**"
+    - "docs/07-release/**"
+    - "docs/09-knowledge/**"
+    - "docs/11-guides/**"
+  exclude:
+    - "docs/**/drafts/**"
+    - "docs/**/scratch/**"
+    - "docs/01-getting-started/private/**"
+    - "docs/98-meta/workspace-notes/**"
+    - "docs/90-archive/**"
+  overrides:
+    "docs/05-operations/security/**":
+      sync_mode: indexed-only
+      visibility: restricted
+      audience: restricted
+      publish: false
+
+    "docs/11-guides/public/**":
+      sync_mode: mirrored
+      visibility: public
+      audience: public
+      publish: true
+      publish_targets:
+        - public-site
+
+    "docs/11-guides/internal/**":
+      sync_mode: mirrored
+      visibility: internal
+      audience: internal
+      publish: true
+      publish_targets:
+        - internal-site
+
+    "docs/11-guides/engineering/**":
+      sync_mode: mirrored
+      visibility: internal
+      audience: engineering
+      publish: true
+      publish_targets:
+        - engineering-site
+
+    "docs/98-meta/assets/**":
+      sync_mode: indexed-only
+      visibility: internal
+      audience: engineering
+      publish: false
+  destinations:
+    "docs/02-architecture/**":
+      hub_path: "hub/04-engineering/platform/sample-service/"
+    "docs/03-decisions/**":
+      hub_path: "hub/04-engineering/patterns/sample-service/"
+    "docs/05-operations/runbooks/**":
+      hub_path: "hub/04-engineering/shared-runbooks/sample-service/"
+    "docs/11-guides/public/**":
+      hub_path: "hub/06-support/public-kb/sample-service/"
+    "docs/11-guides/internal/**":
+      hub_path: "hub/06-support/internal-kb/sample-service/"
+    "docs/11-guides/engineering/**":
+      hub_path: "hub/04-engineering/platform/sample-service/guides/"
+
+approval:
+  required_for:
+    public: true
+    restricted: true
+    policy: true
+    security_sensitive: true
+
+ownership:
+  default_owner: team-name
+  require_owner: true

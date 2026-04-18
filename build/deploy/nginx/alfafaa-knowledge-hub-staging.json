@@ -1,0 +1,17 @@
+{
+  "displayName": "Alfafaa Knowledge Hub",
+  "server_name": "_",
+  "generated_config": "build/deploy/nginx/alfafaa-knowledge-hub-staging.conf",
+  "targets": [
+    {
+      "target": "internal-site",
+      "listen_port": 8088,
+      "root": "/srv/alfafaa-knowledge-hub/internal-site/current"
+    },
+    {
+      "target": "engineering-site",
+      "listen_port": 8089,
+      "root": "/srv/alfafaa-knowledge-hub/engineering-site/current"
+    }
+  ]
+}

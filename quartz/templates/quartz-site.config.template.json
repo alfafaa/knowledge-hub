@@ -1,0 +1,10 @@
+{
+  "displayName": "Alfafaa Knowledge Hub",
+  "target": "internal-site",
+  "contentRoot": "content",
+  "sourceManifest": "../../build/manifests/internal-site.json",
+  "notes": [
+    "Use this file as a lightweight bridge between publish planning and a real Quartz app.",
+    "A future Quartz app can read the content root directly from this workspace."
+  ]
+}

@@ -1,0 +1,19 @@
+display_name: Alfafaa Knowledge Hub
+deploy_root: deploy/runtime
+targets:
+  internal-site:
+    enabled: true
+    deploy_to: internal-site/current
+    preserve_previous: true
+  engineering-site:
+    enabled: true
+    deploy_to: engineering-site/current
+    preserve_previous: true
+  public-site:
+    enabled: false
+    deploy_to: public-site/current
+    preserve_previous: true
+  admin-site:
+    enabled: false
+    deploy_to: admin-site/current
+    preserve_previous: true

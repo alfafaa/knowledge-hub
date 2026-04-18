@@ -1,0 +1,79 @@
+required_fields:
+  - id
+  - title
+  - type
+  - audience
+  - visibility
+  - status
+  - owner
+  - publish
+  - last_reviewed
+  - review_cycle_days
+
+field_types:
+  id: str
+  title: str
+  type: str
+  audience: str
+  visibility: str
+  status: str
+  owner: str
+  publish: bool
+  publish_targets: list
+  last_reviewed: date
+  review_cycle_days: int
+  sync_mode: str
+  access_groups: list
+  access_level: str
+  source_repo: str
+  source_path: str
+  hub_path: str
+  product: str
+  project: str
+  summary: str
+
+enums:
+  type:
+    - policy
+    - standard
+    - guide
+    - runbook
+    - reference
+    - adr
+    - rfc
+    - prd
+    - faq
+    - postmortem
+    - release-note
+    - glossary
+  audience:
+    - public
+    - internal
+    - engineering
+    - admin
+    - restricted
+  visibility:
+    - public
+    - internal
+    - restricted
+  status:
+    - draft
+    - review
+    - approved
+    - active
+    - deprecated
+    - archived
+  sync_mode:
+    - local-only
+    - indexed-only
+    - mirrored
+  access_level:
+    - standard
+    - sensitive
+    - confidential
+
+publish_targets:
+  - public-site
+  - internal-site
+  - engineering-site
+  - admin-site

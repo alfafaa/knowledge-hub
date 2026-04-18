@@ -1,0 +1,12 @@
+{
+  "counts": {
+    "catalog_only": 0,
+    "generated_catalog_pages": 0,
+    "staged": 0,
+    "total": 0
+  },
+  "display_name": "Alfafaa Knowledge Hub",
+  "items": [],
+  "publish_target": "admin-site",
+  "site_content_root": "build/sites/admin-site/content"
+}

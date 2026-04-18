@@ -1,0 +1,23 @@
+display_name: Alfafaa Knowledge Hub
+host: 89.167.69.232
+user: root
+port: 22
+remote_root: /srv/alfafaa-knowledge-hub
+remote_packages_dir: /srv/alfafaa-knowledge-hub/packages
+targets:
+  internal-site:
+    enabled: true
+    deploy_to: internal-site/current
+    preserve_previous: true
+  engineering-site:
+    enabled: true
+    deploy_to: engineering-site/current
+    preserve_previous: true
+  public-site:
+    enabled: false
+    deploy_to: public-site/current
+    preserve_previous: true
+  admin-site:
+    enabled: false
+    deploy_to: admin-site/current
+    preserve_previous: true

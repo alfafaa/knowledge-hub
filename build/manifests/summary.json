@@ -1,0 +1,29 @@
+{
+  "display_name": "Alfafaa Knowledge Hub",
+  "targets": {
+    "admin-site": {
+      "catalog_only": 0,
+      "generated_catalog_pages": 0,
+      "staged": 0,
+      "total": 0
+    },
+    "engineering-site": {
+      "catalog_only": 0,
+      "generated_catalog_pages": 4,
+      "staged": 0,
+      "total": 4
+    },
+    "internal-site": {
+      "catalog_only": 0,
+      "generated_catalog_pages": 0,
+      "staged": 1,
+      "total": 1
+    },
+    "public-site": {
+      "catalog_only": 0,
+      "generated_catalog_pages": 0,
+      "staged": 1,
+      "total": 1
+    }
+  }
+}

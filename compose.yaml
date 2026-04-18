@@ -1,0 +1,12 @@
+services:
+  knowledge-hub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: alfafaa-knowledge-hub:local
+    working_dir: /app
+    volumes:
+      - .:/app
+    command:
+      - --docs-root
+      - examples/sample-project-repo/docs

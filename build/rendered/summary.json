@@ -1,0 +1,85 @@
+{
+  "displayName": "Alfafaa Knowledge Hub",
+  "targets": {
+    "public-site": {
+      "workspace": "quartz/workspaces/public-site",
+      "source_content_root": "quartz/workspaces/public-site/content",
+      "build_content_root": "build/quartz-sources/public-site/content",
+      "site_root": "build/rendered/public-site",
+      "copiedFiles": 1,
+      "generatedFiles": 18,
+      "ok": true,
+      "command": [
+        "node",
+        "./quartz/bootstrap-cli.mjs",
+        "build",
+        "-d",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/public-site/content",
+        "-o",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/public-site"
+      ],
+      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/public-site` in 19ms\nFound 2 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/public-site/content` in 32ms\nParsing input files using 1 threads\n\nWarning: couldn't find git repository for /media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/public-site/content\n\nWarning: found invalid date \"0\" in `06-support/public-kb/billing/getting-started.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 2 Markdown files in 289ms\nFiltered out 0 files in 106\u03bcs\nEmitting files\nEmitted 18 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/public-site` in 345ms\nDone processing 2 files in 691ms\n",
+      "stderr": "(node:8) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"
+    },
+    "internal-site": {
+      "workspace": "quartz/workspaces/internal-site",
+      "source_content_root": "quartz/workspaces/internal-site/content",
+      "build_content_root": "build/quartz-sources/internal-site/content",
+      "site_root": "build/rendered/internal-site",
+      "copiedFiles": 1,
+      "generatedFiles": 18,
+      "ok": true,
+      "command": [
+        "node",
+        "./quartz/bootstrap-cli.mjs",
+        "build",
+        "-d",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/internal-site/content",
+        "-o",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/internal-site"
+      ],
+      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/internal-site` in 21ms\nFound 2 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/internal-site/content` in 33ms\nParsing input files using 1 threads\n\nWarning: couldn't find git repository for /media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/internal-site/content\n\nWarning: found invalid date \"0\" in `06-support/internal-kb/billing/approval-workflow.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 2 Markdown files in 292ms\nFiltered out 0 files in 106\u03bcs\nEmitting files\nEmitted 18 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/internal-site` in 328ms\nDone processing 2 files in 680ms\n",
+      "stderr": "(node:68) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"
+    },
+    "engineering-site": {
+      "workspace": "quartz/workspaces/engineering-site",
+      "source_content_root": "quartz/workspaces/engineering-site/content",
+      "build_content_root": "build/quartz-sources/engineering-site/content",
+      "site_root": "build/rendered/engineering-site",
+      "copiedFiles": 4,
+      "generatedFiles": 23,
+      "ok": true,
+      "command": [
+        "node",
+        "./quartz/bootstrap-cli.mjs",
+        "build",
+        "-d",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/engineering-site/content",
+        "-o",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/engineering-site"
+      ],
+      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/engineering-site` in 21ms\nFound 5 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/engineering-site/content` in 35ms\nParsing input files using 1 threads\n\nWarning: couldn't find git repository for /media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/engineering-site/content\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/02-architecture/system-design.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/_index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 5 Markdown files in 392ms\nFiltered out 0 files in 161\u03bcs\nEmitting files\nEmitted 23 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/engineering-site` in 345ms\nDone processing 5 files in 799ms\n",
+      "stderr": "(node:122) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"
+    },
+    "admin-site": {
+      "workspace": "quartz/workspaces/admin-site",
+      "source_content_root": "quartz/workspaces/admin-site/content",
+      "build_content_root": "build/quartz-sources/admin-site/content",
+      "site_root": "build/rendered/admin-site",
+      "copiedFiles": 0,
+      "generatedFiles": 14,
+      "ok": true,
+      "command": [
+        "node",
+        "./quartz/bootstrap-cli.mjs",
+        "build",
+        "-d",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/admin-site/content",
+        "-o",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/admin-site"
+      ],
+      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/admin-site` in 18ms\nFound 1 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/admin-site/content` in 29ms\nParsing input files using 1 threads\n\nWarning: couldn't find git repository for /media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/admin-site/content\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 1 Markdown files in 280ms\nFiltered out 0 files in 129\u03bcs\nEmitting files\nEmitted 14 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/admin-site` in 330ms\nDone processing 1 files in 662ms\n",
+      "stderr": "(node:191) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"
+    }
+  }
+}

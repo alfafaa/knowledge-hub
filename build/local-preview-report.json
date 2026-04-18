@@ -1,0 +1,18 @@
+{
+  "displayName": "Alfafaa Knowledge Hub",
+  "host": "127.0.0.1",
+  "port": 8010,
+  "rootUrl": "http://127.0.0.1:8010/",
+  "targets": {
+    "engineering-site": {
+      "url": "http://127.0.0.1:8010/engineering-site/",
+      "contentRoot": "deploy/runtime/engineering-site/current/content",
+      "generatedFiles": 4
+    },
+    "internal-site": {
+      "url": "http://127.0.0.1:8010/internal-site/",
+      "contentRoot": "deploy/runtime/internal-site/current/content",
+      "generatedFiles": 1
+    }
+  }
+}

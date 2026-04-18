@@ -1,0 +1,8 @@
+{
+  "displayName": "Alfafaa Knowledge Hub",
+  "target": "admin-site",
+  "contentRoot": "content",
+  "sourceManifest": "build/manifests/admin-site.json",
+  "sourceContentRoot": "build/sites/admin-site/content",
+  "generatedFiles": 0
+}

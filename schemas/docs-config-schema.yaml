@@ -1,0 +1,60 @@
+required_root_fields:
+  - repo_type
+  - repo_name
+  - docs_version
+  - defaults
+  - sync
+  - approval
+  - ownership
+
+required_defaults_fields:
+  - sync_mode
+  - visibility
+  - audience
+  - publish
+  - publish_targets
+
+required_sync_fields:
+  - include
+  - exclude
+  - overrides
+
+allowed_repo_types:
+  - service
+  - frontend-app
+  - library
+  - platform
+  - internal-tool
+
+allowed_sync_modes:
+  - local-only
+  - indexed-only
+  - mirrored
+
+allowed_visibility:
+  - public
+  - internal
+  - restricted
+
+allowed_audience:
+  - public
+  - internal
+  - engineering
+  - admin
+  - restricted
+
+allowed_publish_targets:
+  - public-site
+  - internal-site
+  - engineering-site
+  - admin-site
+
+required_approval_flags:
+  - public
+  - restricted
+  - policy
+  - security_sensitive
+
+required_ownership_fields:
+  - default_owner
+  - require_owner

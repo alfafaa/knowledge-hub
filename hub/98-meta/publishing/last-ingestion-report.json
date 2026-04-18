@@ -1,0 +1,78 @@
+{
+  "docs_root": "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/examples/sample-project-repo/docs",
+  "indexed": [
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/02-architecture/system-design.md",
+      "matched_destination": "docs/**",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish": true,
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "source": "docs/02-architecture/system-design.md",
+      "visibility": "internal"
+    },
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table.md",
+      "matched_destination": "docs/**",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish": true,
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "source": "docs/03-decisions/adr-001-use-ledger-table.md",
+      "visibility": "internal"
+    },
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md",
+      "matched_destination": "docs/**",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish": true,
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "source": "docs/05-operations/runbooks/payment-recovery.md",
+      "visibility": "internal"
+    },
+    {
+      "action": "indexed-only",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/_index.md",
+      "matched_destination": "docs/**",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish": true,
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "source": "docs/_index.md",
+      "visibility": "internal"
+    }
+  ],
+  "indexed_count": 4,
+  "mirrored": [
+    {
+      "action": "mirrored",
+      "destination": "hub/06-support/internal-kb/billing/approval-workflow.md",
+      "source": "docs/11-guides/internal/approval-workflow.md"
+    },
+    {
+      "action": "mirrored",
+      "destination": "hub/06-support/public-kb/billing/getting-started.md",
+      "source": "docs/11-guides/public/getting-started.md"
+    }
+  ],
+  "mirrored_count": 2,
+  "repo_name": "billing-service",
+  "skipped": [],
+  "skipped_count": 0
+}

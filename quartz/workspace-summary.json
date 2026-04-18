@@ -1,0 +1,21 @@
+{
+  "displayName": "Alfafaa Knowledge Hub",
+  "targets": {
+    "public-site": {
+      "workspace": "quartz/workspaces/public-site",
+      "generatedFiles": 1
+    },
+    "internal-site": {
+      "workspace": "quartz/workspaces/internal-site",
+      "generatedFiles": 1
+    },
+    "engineering-site": {
+      "workspace": "quartz/workspaces/engineering-site",
+      "generatedFiles": 4
+    },
+    "admin-site": {
+      "workspace": "quartz/workspaces/admin-site",
+      "generatedFiles": 0
+    }
+  }
+}

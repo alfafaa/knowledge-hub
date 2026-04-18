@@ -1,0 +1,8 @@
+{
+  "displayName": "Alfafaa Knowledge Hub",
+  "target": "engineering-site",
+  "contentRoot": "content",
+  "sourceManifest": "build/manifests/engineering-site.json",
+  "sourceContentRoot": "build/sites/engineering-site/content",
+  "generatedFiles": 4
+}

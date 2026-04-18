@@ -1,0 +1,116 @@
+{
+  "displayName": "Alfafaa Knowledge Hub",
+  "docsRoot": "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/examples/sample-project-repo/docs",
+  "branch": "main",
+  "event": "push",
+  "success": true,
+  "steps": [
+    {
+      "name": "validate",
+      "command": [
+        "python3",
+        "scripts/validate_docs.py",
+        "--docs-root",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/examples/sample-project-repo/docs"
+      ],
+      "returncode": 0,
+      "stdout": "summary: 0 error(s), 0 warning(s)\n",
+      "stderr": "",
+      "ok": true
+    },
+    {
+      "name": "ingest",
+      "command": [
+        "python3",
+        "scripts/ingest_sync.py",
+        "--docs-root",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/examples/sample-project-repo/docs"
+      ],
+      "returncode": 0,
+      "stdout": "ingestion complete: mirrored=2 indexed=4 skipped=0 catalog=hub/98-meta/publishing/indexed-docs-catalog.json\n",
+      "stderr": "",
+      "ok": true
+    },
+    {
+      "name": "publish-plan",
+      "command": [
+        "python3",
+        "scripts/plan_publish.py"
+      ],
+      "returncode": 0,
+      "stdout": "publish planning complete: manifests=build/manifests\n",
+      "stderr": "",
+      "ok": true
+    },
+    {
+      "name": "prepare-quartz-workspace",
+      "command": [
+        "python3",
+        "scripts/prepare_quartz_workspace.py"
+      ],
+      "returncode": 0,
+      "stdout": "quartz workspace prepared: quartz/workspaces\n",
+      "stderr": "",
+      "ok": true
+    },
+    {
+      "name": "build-quartz-sites",
+      "command": [
+        "python3",
+        "scripts/build_quartz_sites.py"
+      ],
+      "returncode": 0,
+      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/public-site` in 19ms\nFound 2 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/public-site/content` in 32ms\nParsing input files using 1 threads\n\nWarning: couldn't find git repository for /media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/public-site/content\n\nWarning: found invalid date \"0\" in `06-support/public-kb/billing/getting-started.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 2 Markdown files in 289ms\nFiltered out 0 files in 106\u03bcs\nEmitting files\nEmitted 18 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/public-site` in 345ms\nDone processing 2 files in 691ms\n\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/internal-site` in 21ms\nFound 2 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/internal-site/content` in 33ms\nParsing input files using 1 threads\n\nWarning: couldn't find git repository for /media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/internal-site/content\n\nWarning: found invalid date \"0\" in `06-support/internal-kb/billing/approval-workflow.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 2 Markdown files in 292ms\nFiltered out 0 files in 106\u03bcs\nEmitting files\nEmitted 18 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/internal-site` in 328ms\nDone processing 2 files in 680ms\n\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/engineering-site` in 21ms\nFound 5 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/engineering-site/content` in 35ms\nParsing input files using 1 threads\n\nWarning: couldn't find git repository for /media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/engineering-site/content\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/02-architecture/system-design.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/_index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 5 Markdown files in 392ms\nFiltered out 0 files in 161\u03bcs\nEmitting files\nEmitted 23 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/engineering-site` in 345ms\nDone processing 5 files in 799ms\n\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/admin-site` in 18ms\nFound 1 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/admin-site/content` in 29ms\nParsing input files using 1 threads\n\nWarning: couldn't find git repository for /media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/admin-site/content\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 1 Markdown files in 280ms\nFiltered out 0 files in 129\u03bcs\nEmitting files\nEmitted 14 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/admin-site` in 330ms\nDone processing 1 files in 662ms\nquartz static render complete: build/rendered/summary.json\n",
+      "stderr": "(node:8) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n(node:68) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n(node:122) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n(node:191) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n",
+      "ok": true
+    },
+    {
+      "name": "plan-deploy",
+      "command": [
+        "python3",
+        "scripts/plan_deploy.py",
+        "--branch",
+        "main",
+        "--event",
+        "push"
+      ],
+      "returncode": 0,
+      "stdout": "deployment plan complete: build/deploy/deploy-plan.json\n",
+      "stderr": "",
+      "ok": true
+    },
+    {
+      "name": "generate-nginx-config",
+      "command": [
+        "python3",
+        "scripts/generate_nginx_config.py"
+      ],
+      "returncode": 0,
+      "stdout": "nginx config generated: build/deploy/nginx/alfafaa-knowledge-hub-staging.conf\n",
+      "stderr": "",
+      "ok": true
+    },
+    {
+      "name": "execute-deploy",
+      "command": [
+        "python3",
+        "scripts/execute_deploy.py"
+      ],
+      "returncode": 0,
+      "stdout": "deployment execution complete: packaged=2 skipped=2\n",
+      "stderr": "",
+      "ok": true
+    },
+    {
+      "name": "deploy-to-vps",
+      "command": [
+        "python3",
+        "scripts/deploy_to_vps.py"
+      ],
+      "returncode": 0,
+      "stdout": "vps deploy complete: deployed=2 skipped=2\n",
+      "stderr": "",
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Alfafaa Knowledge Hub Engineering</title>
+      <link>https://engineering-site.localhost</link>
+      <description>Last 10 notes on Alfafaa Knowledge Hub Engineering</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>Alfafaa Knowledge Hub Engineering</title>
+    <link>https://engineering-site.localhost/</link>
+    <guid>https://engineering-site.localhost/</guid>
+    <description><![CDATA[ Alfafaa Knowledge Hub Engineering This landing page was generated automatically from the staged knowledge-hub content. Sections 03-projects . ]]></description>
+    <pubDate>Wed, 08 Apr 2026 11:40:29 GMT</pubDate>
+  </item><item>
+    <title>Billing Service Documentation</title>
+    <link>https://engineering-site.localhost/03-projects/billing-modernization/</link>
+    <guid>https://engineering-site.localhost/03-projects/billing-modernization/</guid>
+    <description><![CDATA[ Billing Service Documentation Catalog Entry This page was generated from an indexed-only document. ]]></description>
+    <pubDate>Wed, 08 Apr 2026 11:40:15 GMT</pubDate>
+  </item><item>
+    <title>Payment Recovery Runbook</title>
+    <link>https://engineering-site.localhost/03-projects/billing-modernization/05-operations/runbooks/payment-recovery</link>
+    <guid>https://engineering-site.localhost/03-projects/billing-modernization/05-operations/runbooks/payment-recovery</guid>
+    <description><![CDATA[ Payment Recovery Runbook Catalog Entry This page was generated from an indexed-only document. ]]></description>
+    <pubDate>Wed, 08 Apr 2026 11:40:15 GMT</pubDate>
+  </item><item>
+    <title>Use Ledger Table For Charge Events</title>
+    <link>https://engineering-site.localhost/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table</link>
+    <guid>https://engineering-site.localhost/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table</guid>
+    <description><![CDATA[ Use Ledger Table For Charge Events Catalog Entry This page was generated from an indexed-only document. ]]></description>
+    <pubDate>Wed, 08 Apr 2026 11:40:15 GMT</pubDate>
+  </item><item>
+    <title>Billing System Design</title>
+    <link>https://engineering-site.localhost/03-projects/billing-modernization/02-architecture/system-design</link>
+    <guid>https://engineering-site.localhost/03-projects/billing-modernization/02-architecture/system-design</guid>
+    <description><![CDATA[ Billing System Design Catalog Entry This page was generated from an indexed-only document. ]]></description>
+    <pubDate>Wed, 08 Apr 2026 11:40:15 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

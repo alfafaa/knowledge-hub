@@ -1,0 +1,31 @@
+{
+  "counts": {
+    "catalog_only": 0,
+    "generated_catalog_pages": 0,
+    "staged": 1,
+    "total": 1
+  },
+  "display_name": "Alfafaa Knowledge Hub",
+  "items": [
+    {
+      "action": "mirrored",
+      "audience": "internal",
+      "destination": "hub/06-support/internal-kb/billing/approval-workflow.md",
+      "id": "billing-internal-approval-workflow",
+      "product": null,
+      "project": null,
+      "publish_targets": [
+        "internal-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/11-guides/internal/approval-workflow.md",
+      "stage_status": "staged",
+      "staged_content": "build/sites/internal-site/content/06-support/internal-kb/billing/approval-workflow.md",
+      "title": "Billing Approval Workflow",
+      "type": "guide",
+      "visibility": "internal"
+    }
+  ],
+  "publish_target": "internal-site",
+  "site_content_root": "build/sites/internal-site/content"
+}

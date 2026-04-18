@@ -1,0 +1,79 @@
+{
+  "displayName": "Alfafaa Knowledge Hub",
+  "host": "89.167.69.232",
+  "user": "root",
+  "port": 22,
+  "dry_run": false,
+  "ok": true,
+  "uploaded": [
+    {
+      "target": "internal-site",
+      "package": "build/deploy/packages/internal-site.tar.gz"
+    },
+    {
+      "target": "engineering-site",
+      "package": "build/deploy/packages/engineering-site.tar.gz"
+    }
+  ],
+  "skipped": [],
+  "commands": [
+    {
+      "command": [
+        "ssh",
+        "-p",
+        "22",
+        "root@89.167.69.232",
+        "mkdir -p /srv/alfafaa-knowledge-hub/packages /srv/alfafaa-knowledge-hub"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "ok": true,
+      "dry_run": false
+    },
+    {
+      "command": [
+        "rsync",
+        "-az",
+        "-e",
+        "ssh -p 22",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/deploy/packages/internal-site.tar.gz",
+        "root@89.167.69.232:/srv/alfafaa-knowledge-hub/packages/"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "ok": true,
+      "dry_run": false
+    },
+    {
+      "command": [
+        "rsync",
+        "-az",
+        "-e",
+        "ssh -p 22",
+        "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/deploy/packages/engineering-site.tar.gz",
+        "root@89.167.69.232:/srv/alfafaa-knowledge-hub/packages/"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "ok": true,
+      "dry_run": false
+    },
+    {
+      "command": [
+        "ssh",
+        "-p",
+        "22",
+        "root@89.167.69.232",
+        "set -euo pipefail\nmkdir -p /srv/alfafaa-knowledge-hub/packages\nmkdir -p /srv/alfafaa-knowledge-hub\nrm -rf /srv/alfafaa-knowledge-hub/internal-site/incoming\nmkdir -p /srv/alfafaa-knowledge-hub/internal-site/incoming\ntar -xzf /srv/alfafaa-knowledge-hub/packages/internal-site.tar.gz -C /srv/alfafaa-knowledge-hub/internal-site/incoming\nif [ -d /srv/alfafaa-knowledge-hub/internal-site/current ]; then rm -rf /srv/alfafaa-knowledge-hub/internal-site/current-previous; mv /srv/alfafaa-knowledge-hub/internal-site/current /srv/alfafaa-knowledge-hub/internal-site/current-previous; fi\nmkdir -p /srv/alfafaa-knowledge-hub/internal-site\nmv /srv/alfafaa-knowledge-hub/internal-site/incoming /srv/alfafaa-knowledge-hub/internal-site/current\nrm -rf /srv/alfafaa-knowledge-hub/engineering-site/incoming\nmkdir -p /srv/alfafaa-knowledge-hub/engineering-site/incoming\ntar -xzf /srv/alfafaa-knowledge-hub/packages/engineering-site.tar.gz -C /srv/alfafaa-knowledge-hub/engineering-site/incoming\nif [ -d /srv/alfafaa-knowledge-hub/engineering-site/current ]; then rm -rf /srv/alfafaa-knowledge-hub/engineering-site/current-previous; mv /srv/alfafaa-knowledge-hub/engineering-site/current /srv/alfafaa-knowledge-hub/engineering-site/current-previous; fi\nmkdir -p /srv/alfafaa-knowledge-hub/engineering-site\nmv /srv/alfafaa-knowledge-hub/engineering-site/incoming /srv/alfafaa-knowledge-hub/engineering-site/current"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "ok": true,
+      "dry_run": false
+    }
+  ]
+}
