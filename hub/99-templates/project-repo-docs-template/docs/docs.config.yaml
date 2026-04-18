@@ -46,6 +46,30 @@ sync:
     - "docs/98-meta/workspace-notes/**"
     - "docs/90-archive/**"
   overrides:
+    "docs/02-architecture/**":
+      sync_mode: mirrored
+      visibility: internal
+      audience: engineering
+      publish: true
+      publish_targets:
+        - engineering-site
+
+    "docs/03-decisions/**":
+      sync_mode: mirrored
+      visibility: internal
+      audience: engineering
+      publish: true
+      publish_targets:
+        - engineering-site
+
+    "docs/05-operations/runbooks/**":
+      sync_mode: mirrored
+      visibility: internal
+      audience: engineering
+      publish: true
+      publish_targets:
+        - engineering-site
+
     "docs/05-operations/security/**":
       sync_mode: indexed-only
       visibility: restricted

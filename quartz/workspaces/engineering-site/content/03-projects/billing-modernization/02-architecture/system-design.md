@@ -4,27 +4,51 @@ title: Billing System Design
 type: reference
 audience: engineering
 visibility: internal
-status: active
-owner: billing-service
+status: approved
+owner: team-billing
 publish: true
-summary: Generated catalog page for docs/02-architecture/system-design.md.
+publish_targets:
+  - engineering-site
+last_reviewed: 2026-04-04
+review_cycle_days: 180
+summary: Current service boundaries and flow for billing.
 ---
 
 # Billing System Design
 
-## Catalog Entry
+## Purpose
 
-This page was generated from an `indexed-only` document.
+The billing service records charge attempts, payment outcomes, and recovery actions for subscription events.
 
-- Source repo: `billing-service`
-- Source path: `docs/02-architecture/system-design.md`
-- Intended hub destination: `hub/03-projects/billing-modernization/02-architecture/system-design.md`
-- Type: `reference`
-- Audience: `engineering`
-- Visibility: `internal`
-- Product: `billing`
-- Project: `billing-modernization`
+It is responsible for:
 
-## Note
+- receiving charge requests from upstream product flows
+- recording immutable financial events
+- exposing billing state to internal consumers
 
-The full content has not been mirrored into this site yet. This entry exists so the document remains discoverable in audience-specific builds.
+## Core Components
+
+- `API layer`: receives billing commands and exposes internal read endpoints
+- `ledger table`: stores append-only charge and recovery events
+- `reconciliation worker`: derives account state from ledger history
+- `notification integration`: emits billing outcome events to dependent systems
+
+## Data Flow
+
+1. A product workflow requests a charge attempt.
+2. The billing API validates the request and creates a ledger event.
+3. The payment processor responds with success, failure, or pending state.
+4. The result is persisted as a new ledger event.
+5. Recovery workers evaluate failed attempts and schedule follow-up actions.
+
+## Boundaries
+
+- This service owns charge-event history.
+- It does not own customer profile data.
+- It does not own subscription-plan definition.
+
+## Operational Notes
+
+- Writes should be append-only.
+- Derived account balances should be rebuildable from ledger history.
+- Recovery workflows should remain idempotent.

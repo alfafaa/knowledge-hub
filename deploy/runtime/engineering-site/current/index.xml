@@ -10,31 +10,31 @@
     <link>https://engineering-site.localhost/</link>
     <guid>https://engineering-site.localhost/</guid>
     <description><![CDATA[ Alfafaa Knowledge Hub Engineering This landing page was generated automatically from the staged knowledge-hub content. Sections 03-projects . ]]></description>
-    <pubDate>Wed, 08 Apr 2026 11:40:29 GMT</pubDate>
+    <pubDate>Wed, 08 Apr 2026 12:03:57 GMT</pubDate>
   </item><item>
     <title>Billing Service Documentation</title>
     <link>https://engineering-site.localhost/03-projects/billing-modernization/</link>
     <guid>https://engineering-site.localhost/03-projects/billing-modernization/</guid>
     <description><![CDATA[ Billing Service Documentation Catalog Entry This page was generated from an indexed-only document. ]]></description>
-    <pubDate>Wed, 08 Apr 2026 11:40:15 GMT</pubDate>
+    <pubDate>Wed, 08 Apr 2026 12:03:42 GMT</pubDate>
   </item><item>
     <title>Payment Recovery Runbook</title>
     <link>https://engineering-site.localhost/03-projects/billing-modernization/05-operations/runbooks/payment-recovery</link>
     <guid>https://engineering-site.localhost/03-projects/billing-modernization/05-operations/runbooks/payment-recovery</guid>
-    <description><![CDATA[ Payment Recovery Runbook Catalog Entry This page was generated from an indexed-only document. ]]></description>
-    <pubDate>Wed, 08 Apr 2026 11:40:15 GMT</pubDate>
+    <description><![CDATA[ Payment Recovery Runbook Trigger Use this runbook when repeated payment attempts fail for a live customer account and recovery automation has stopped progressing. ]]></description>
+    <pubDate>Wed, 08 Apr 2026 12:01:26 GMT</pubDate>
   </item><item>
     <title>Use Ledger Table For Charge Events</title>
     <link>https://engineering-site.localhost/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table</link>
     <guid>https://engineering-site.localhost/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table</guid>
-    <description><![CDATA[ Use Ledger Table For Charge Events Catalog Entry This page was generated from an indexed-only document. ]]></description>
-    <pubDate>Wed, 08 Apr 2026 11:40:15 GMT</pubDate>
+    <description><![CDATA[ ADR-001 Use Ledger Table For Charge Events Status Accepted Context The billing service needs a durable record of charge attempts, retries, reversals, and recovery actions. ]]></description>
+    <pubDate>Wed, 08 Apr 2026 12:01:19 GMT</pubDate>
   </item><item>
     <title>Billing System Design</title>
     <link>https://engineering-site.localhost/03-projects/billing-modernization/02-architecture/system-design</link>
     <guid>https://engineering-site.localhost/03-projects/billing-modernization/02-architecture/system-design</guid>
-    <description><![CDATA[ Billing System Design Catalog Entry This page was generated from an indexed-only document. ]]></description>
-    <pubDate>Wed, 08 Apr 2026 11:40:15 GMT</pubDate>
+    <description><![CDATA[ Billing System Design Purpose The billing service records charge attempts, payment outcomes, and recovery actions for subscription events. ]]></description>
+    <pubDate>Wed, 08 Apr 2026 12:01:12 GMT</pubDate>
   </item>
     </channel>
   </rss>

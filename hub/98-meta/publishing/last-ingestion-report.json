@@ -4,48 +4,6 @@
     {
       "action": "indexed-only",
       "audience": "engineering",
-      "destination": "hub/03-projects/billing-modernization/02-architecture/system-design.md",
-      "matched_destination": "docs/**",
-      "product": "billing",
-      "project": "billing-modernization",
-      "publish": true,
-      "publish_targets": [
-        "engineering-site"
-      ],
-      "source": "docs/02-architecture/system-design.md",
-      "visibility": "internal"
-    },
-    {
-      "action": "indexed-only",
-      "audience": "engineering",
-      "destination": "hub/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table.md",
-      "matched_destination": "docs/**",
-      "product": "billing",
-      "project": "billing-modernization",
-      "publish": true,
-      "publish_targets": [
-        "engineering-site"
-      ],
-      "source": "docs/03-decisions/adr-001-use-ledger-table.md",
-      "visibility": "internal"
-    },
-    {
-      "action": "indexed-only",
-      "audience": "engineering",
-      "destination": "hub/03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md",
-      "matched_destination": "docs/**",
-      "product": "billing",
-      "project": "billing-modernization",
-      "publish": true,
-      "publish_targets": [
-        "engineering-site"
-      ],
-      "source": "docs/05-operations/runbooks/payment-recovery.md",
-      "visibility": "internal"
-    },
-    {
-      "action": "indexed-only",
-      "audience": "engineering",
       "destination": "hub/03-projects/billing-modernization/_index.md",
       "matched_destination": "docs/**",
       "product": "billing",
@@ -58,8 +16,23 @@
       "visibility": "internal"
     }
   ],
-  "indexed_count": 4,
+  "indexed_count": 1,
   "mirrored": [
+    {
+      "action": "mirrored",
+      "destination": "hub/03-projects/billing-modernization/02-architecture/system-design.md",
+      "source": "docs/02-architecture/system-design.md"
+    },
+    {
+      "action": "mirrored",
+      "destination": "hub/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table.md",
+      "source": "docs/03-decisions/adr-001-use-ledger-table.md"
+    },
+    {
+      "action": "mirrored",
+      "destination": "hub/03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md",
+      "source": "docs/05-operations/runbooks/payment-recovery.md"
+    },
     {
       "action": "mirrored",
       "destination": "hub/06-support/internal-kb/billing/approval-workflow.md",
@@ -71,7 +44,7 @@
       "source": "docs/11-guides/public/getting-started.md"
     }
   ],
-  "mirrored_count": 2,
+  "mirrored_count": 5,
   "repo_name": "billing-service",
   "skipped": [],
   "skipped_count": 0

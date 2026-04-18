@@ -10,31 +10,31 @@
     <link>https://engineering-site.localhost/</link>
     <guid>https://engineering-site.localhost/</guid>
     <description><![CDATA[ Alfafaa Knowledge Hub Engineering This landing page was generated automatically from the staged knowledge-hub content. Sections 03-projects . ]]></description>
-    <pubDate>Wed, 08 Apr 2026 11:38:10 GMT</pubDate>
+    <pubDate>Wed, 08 Apr 2026 11:49:39 GMT</pubDate>
   </item><item>
     <title>Billing Service Documentation</title>
     <link>https://engineering-site.localhost/03-projects/billing-modernization/</link>
     <guid>https://engineering-site.localhost/03-projects/billing-modernization/</guid>
     <description><![CDATA[ Billing Service Documentation Catalog Entry This page was generated from an indexed-only document. ]]></description>
-    <pubDate>Wed, 08 Apr 2026 11:37:56 GMT</pubDate>
+    <pubDate>Wed, 08 Apr 2026 11:49:25 GMT</pubDate>
   </item><item>
     <title>Payment Recovery Runbook</title>
     <link>https://engineering-site.localhost/03-projects/billing-modernization/05-operations/runbooks/payment-recovery</link>
     <guid>https://engineering-site.localhost/03-projects/billing-modernization/05-operations/runbooks/payment-recovery</guid>
-    <description><![CDATA[ Payment Recovery Runbook Catalog Entry This page was generated from an indexed-only document. ]]></description>
-    <pubDate>Wed, 08 Apr 2026 11:37:56 GMT</pubDate>
-  </item><item>
-    <title>Use Ledger Table For Charge Events</title>
-    <link>https://engineering-site.localhost/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table</link>
-    <guid>https://engineering-site.localhost/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table</guid>
-    <description><![CDATA[ Use Ledger Table For Charge Events Catalog Entry This page was generated from an indexed-only document. ]]></description>
-    <pubDate>Wed, 08 Apr 2026 11:37:56 GMT</pubDate>
+    <description><![CDATA[ Payment Recovery Runbook. ]]></description>
+    <pubDate>Sat, 04 Apr 2026 05:49:47 GMT</pubDate>
   </item><item>
     <title>Billing System Design</title>
     <link>https://engineering-site.localhost/03-projects/billing-modernization/02-architecture/system-design</link>
     <guid>https://engineering-site.localhost/03-projects/billing-modernization/02-architecture/system-design</guid>
-    <description><![CDATA[ Billing System Design Catalog Entry This page was generated from an indexed-only document. ]]></description>
-    <pubDate>Wed, 08 Apr 2026 11:37:56 GMT</pubDate>
+    <description><![CDATA[ Billing System Design. ]]></description>
+    <pubDate>Sat, 04 Apr 2026 05:49:47 GMT</pubDate>
+  </item><item>
+    <title>Use Ledger Table For Charge Events</title>
+    <link>https://engineering-site.localhost/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table</link>
+    <guid>https://engineering-site.localhost/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table</guid>
+    <description><![CDATA[ ADR-001 Use Ledger Table For Charge Events. ]]></description>
+    <pubDate>Sat, 04 Apr 2026 05:49:47 GMT</pubDate>
   </item>
     </channel>
   </rss>

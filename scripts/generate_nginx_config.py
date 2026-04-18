@@ -40,7 +40,7 @@ def server_block(server_name: str, port: int, root_path: str, target: str) -> st
     error_log /var/log/nginx/{target}.error.log;
 
     location / {{
-        try_files $uri $uri/ /index.html;
+        try_files $uri $uri.html $uri/ /index.html;
     }}
 
     location ~* \\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|xml|json)$ {{

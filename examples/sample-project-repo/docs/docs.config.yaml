@@ -22,6 +22,27 @@ sync:
     - "docs/**/scratch/**"
     - "docs/90-archive/**"
   overrides:
+    "docs/02-architecture/**":
+      sync_mode: mirrored
+      visibility: internal
+      audience: engineering
+      publish: true
+      publish_targets:
+        - engineering-site
+    "docs/03-decisions/**":
+      sync_mode: mirrored
+      visibility: internal
+      audience: engineering
+      publish: true
+      publish_targets:
+        - engineering-site
+    "docs/05-operations/runbooks/**":
+      sync_mode: mirrored
+      visibility: internal
+      audience: engineering
+      publish: true
+      publish_targets:
+        - engineering-site
     "docs/11-guides/public/**":
       sync_mode: mirrored
       visibility: public

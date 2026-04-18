@@ -1,30 +1,47 @@
 ---
 id: billing-payment-recovery-runbook
 title: Payment Recovery Runbook
-type: reference
+type: runbook
 audience: engineering
 visibility: internal
-status: active
-owner: billing-service
+status: approved
+owner: team-billing
 publish: true
-summary: Generated catalog page for docs/05-operations/runbooks/payment-recovery.md.
+publish_targets:
+  - engineering-site
+last_reviewed: 2026-04-04
+review_cycle_days: 90
+summary: Operational steps for payment recovery failures.
 ---
 
 # Payment Recovery Runbook
 
-## Catalog Entry
+## Trigger
 
-This page was generated from an `indexed-only` document.
+Use this runbook when repeated payment attempts fail for a live customer account and recovery automation has stopped progressing.
 
-- Source repo: `billing-service`
-- Source path: `docs/05-operations/runbooks/payment-recovery.md`
-- Intended hub destination: `hub/03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md`
-- Type: `runbook`
-- Audience: `engineering`
-- Visibility: `internal`
-- Product: `billing`
-- Project: `billing-modernization`
+## Checks
 
-## Note
+1. Confirm the latest failure event in the billing ledger.
+2. Confirm whether a retry job is still scheduled.
+3. Confirm whether the payment gateway returned a hard or soft failure.
 
-The full content has not been mirrored into this site yet. This entry exists so the document remains discoverable in audience-specific builds.
+## Recovery Steps
+
+1. Check the affected account in the billing admin view.
+2. Verify that the latest charge event matches the gateway status.
+3. If the failure is retryable, requeue the recovery job once.
+4. If the failure is non-retryable, mark the account for support follow-up.
+5. Add an incident note with the account id, event id, and action taken.
+
+## Escalate When
+
+- the ledger and payment gateway disagree
+- retry jobs are stuck repeatedly
+- multiple accounts show the same failure pattern
+
+## Post-Incident
+
+- update the support note with the final outcome
+- link any broader incident ticket
+- propose a pattern or alert improvement if this was manual-heavy
