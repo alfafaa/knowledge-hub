@@ -1,4 +1,5 @@
-# Documentation Standards
+
+1# Documentation Standards
 
 ## Writing Goals
 
@@ -13,7 +14,15 @@ If a page cannot be classified by owner, audience, and lifecycle, it is not read
 
 ## Frontmatter Standard
 
-Every publishable document should start with structured frontmatter.
+Use a tiered frontmatter model.
+
+That means:
+
+- all docs should carry minimal structure
+- publishable docs need stronger metadata
+- public and restricted docs need the strongest governance metadata
+
+This keeps authoring lighter for employees while keeping published documentation safe and traceable.
 
 ```yaml
 ---
@@ -50,16 +59,39 @@ summary: How session rotation works across services.
 
 ## Required Fields
 
-- `id`
+### Tier 1: Required For All Docs
+
 - `title`
 - `type`
-- `audience`
-- `visibility`
 - `status`
+
+### Tier 2: Required For Publishable Docs
+
+Require these when `publish: true`:
+
 - `owner`
 - `publish`
+- `audience`
+- `visibility`
+- `publish_targets`
+
+### Tier 3: Required For Governed Docs
+
+Require these when a doc is both publishable and `public` or `restricted`:
+
 - `last_reviewed`
 - `review_cycle_days`
+
+## Optional But Useful Fields
+
+- `id`
+- `summary`
+- `product`
+- `project`
+- `access_groups`
+- `access_level`
+
+These should be added when they provide value, but they should not be mandatory for every simple internal draft.
 
 ## Recommended Enumerations
 
@@ -227,6 +259,33 @@ Do not create free-form tag sprawl. Maintain an approved tag catalog in governan
 
 Prefer this page structure:
 
+## Asset Link Validation
+
+Local asset references should be valid before publish/build.
+
+The validator now checks linked local non-Markdown assets such as:
+
+- images
+- SVG diagrams
+- PDFs
+- other linked binary files
+
+Validation rule:
+
+- publishable docs: broken local asset links are `error`
+- non-publishable docs: broken local asset links are `warning`
+
+This is the right tradeoff:
+
+- local drafts stay flexible
+- broken published docs are blocked early
+
+Best practice:
+
+- keep repo-level media under `docs/98-meta/assets/` by default
+- use relative links
+- use page-near asset folders only when one page owns the media tightly
+
 ```markdown
 # Title
 
@@ -248,6 +307,15 @@ What can go wrong, or what was intentionally not chosen.
 ## Related Documents
 Links to ADRs, PRDs, specs, tickets, dashboards, or repos.
 ```
+
+## Validation Principle
+
+The rule should be:
+
+- easy to write
+- strict to publish
+
+Do not force every employee note to be production-grade at creation time.
 
 ## Writing Rules
 

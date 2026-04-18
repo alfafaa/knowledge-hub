@@ -10,6 +10,8 @@ import yaml
 
 
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
+MARKDOWN_LINK_RE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)|\[[^\]]+\]\(([^)]+)\)")
+OBSIDIAN_LINK_RE = re.compile(r"!\[\[([^\]]+)\]\]")
 
 
 def load_yaml(path: Path) -> Any:
@@ -24,6 +26,13 @@ def parse_frontmatter(path: Path) -> dict[str, Any]:
         return {}
     data = yaml.safe_load(match.group(1)) or {}
     return data if isinstance(data, dict) else {}
+
+
+def strip_frontmatter(text: str) -> str:
+    match = FRONTMATTER_RE.match(text)
+    if not match:
+        return text
+    return text[match.end():]
 
 
 def matches(path: str, pattern: str) -> bool:
@@ -46,6 +55,62 @@ def infer_prefix(pattern: str) -> str:
         if idx != -1:
             cut = min(cut, idx)
     return pattern[:cut]
+
+
+def is_external_reference(ref: str) -> bool:
+    lowered = ref.lower()
+    return (
+        lowered.startswith("http://")
+        or lowered.startswith("https://")
+        or lowered.startswith("mailto:")
+        or lowered.startswith("tel:")
+        or lowered.startswith("#")
+    )
+
+
+def normalize_link_target(ref: str) -> str:
+    cleaned = ref.strip()
+    cleaned = cleaned.split("#", 1)[0]
+    cleaned = cleaned.split("?", 1)[0]
+    if "|" in cleaned:
+        cleaned = cleaned.split("|", 1)[0]
+    return cleaned.strip()
+
+
+def extract_asset_references(markdown_path: Path) -> list[str]:
+    text = markdown_path.read_text(encoding="utf-8")
+    body = strip_frontmatter(text)
+    refs: list[str] = []
+
+    for match in MARKDOWN_LINK_RE.finditer(body):
+        ref = match.group(1) or match.group(2) or ""
+        ref = normalize_link_target(ref)
+        if not ref or is_external_reference(ref):
+            continue
+        refs.append(ref)
+
+    for match in OBSIDIAN_LINK_RE.finditer(body):
+        ref = normalize_link_target(match.group(1))
+        if not ref or is_external_reference(ref):
+            continue
+        refs.append(ref)
+
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for ref in refs:
+        if ref in seen:
+            continue
+        seen.add(ref)
+        deduped.append(ref)
+    return deduped
+
+
+def markdown_references_asset(markdown_path: Path, asset_path: Path) -> bool:
+    for ref in extract_asset_references(markdown_path):
+        resolved = (markdown_path.parent / ref).resolve()
+        if resolved == asset_path:
+            return True
+    return False
 
 
 def compute_sync_plan(rel_path: str, frontmatter: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
@@ -122,10 +187,45 @@ def compute_sync_plan(rel_path: str, frontmatter: dict[str, Any], config: dict[s
     }
 
 
+def collect_all_markdown_files(docs_root: Path) -> list[Path]:
+    return sorted(path for path in docs_root.rglob("*.md") if path.is_file())
+
+
+def resolve_changed_markdown_files(docs_root: Path, changed: list[str]) -> list[Path]:
+    repo_root = docs_root.parent.resolve()
+    all_markdown = collect_all_markdown_files(docs_root)
+    selected: set[Path] = set()
+
+    for item in changed:
+        changed_path = (Path.cwd() / item).resolve()
+
+        if changed_path == (docs_root / "docs.config.yaml").resolve():
+            return all_markdown
+
+        if changed_path.suffix.lower() == ".md":
+            try:
+                changed_path.relative_to(docs_root)
+            except ValueError:
+                continue
+            selected.add(changed_path)
+            continue
+
+        try:
+            changed_path.relative_to(repo_root)
+        except ValueError:
+            continue
+
+        for markdown_path in all_markdown:
+            if markdown_references_asset(markdown_path, changed_path):
+                selected.add(markdown_path)
+
+    return sorted(selected)
+
+
 def collect_markdown_files(docs_root: Path, changed: list[str] | None = None) -> list[Path]:
     if changed:
-        return [(Path.cwd() / item).resolve() for item in changed]
-    return sorted(path for path in docs_root.rglob("*.md") if path.is_file())
+        return resolve_changed_markdown_files(docs_root, changed)
+    return collect_all_markdown_files(docs_root)
 
 
 def compute_plans(docs_root: Path, config: dict[str, Any], changed: list[str] | None = None) -> list[dict[str, Any]]:

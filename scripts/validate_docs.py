@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any
 
 import yaml
+from sync_lib import extract_asset_references
 
 
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
@@ -70,6 +71,11 @@ def validate_type(value: Any, expected: str) -> bool:
 
 def add(finding_list: list[Finding], severity: str, path: Path, message: str) -> None:
     finding_list.append(Finding(severity=severity, path=str(path), message=message))
+
+
+def is_asset_reference(ref: str) -> bool:
+    suffix = Path(ref).suffix.lower()
+    return bool(suffix) and suffix != ".md"
 
 
 def validate_docs_config(path: Path, schema: dict[str, Any]) -> list[Finding]:
@@ -154,7 +160,32 @@ def validate_docs_config(path: Path, schema: dict[str, Any]) -> list[Finding]:
     return findings
 
 
-def validate_frontmatter(path: Path, schema: dict[str, Any]) -> list[Finding]:
+def validate_asset_links(path: Path, repo_root: Path, is_publishable: bool) -> list[Finding]:
+    findings: list[Finding] = []
+    severity = "error" if is_publishable else "warning"
+
+    for ref in extract_asset_references(path):
+        if not is_asset_reference(ref):
+            continue
+
+        resolved = (path.parent / ref).resolve()
+        try:
+            resolved.relative_to(repo_root)
+        except ValueError:
+            add(findings, severity, path, f"asset reference escapes repository root: `{ref}`")
+            continue
+
+        if not resolved.exists():
+            add(findings, severity, path, f"linked asset not found: `{ref}`")
+            continue
+
+        if not resolved.is_file():
+            add(findings, severity, path, f"linked asset is not a file: `{ref}`")
+
+    return findings
+
+
+def validate_frontmatter(path: Path, schema: dict[str, Any], repo_root: Path) -> list[Finding]:
     findings: list[Finding] = []
     fm, _ = parse_frontmatter(path)
     if fm is None:
@@ -164,6 +195,21 @@ def validate_frontmatter(path: Path, schema: dict[str, Any]) -> list[Finding]:
     for field in schema["required_fields"]:
         if field not in fm:
             add(findings, "error", path, f"missing required field `{field}`")
+
+    publish_value = fm.get("publish")
+    is_publishable = publish_value is True
+    visibility = fm.get("visibility")
+    is_governed = is_publishable and visibility in {"public", "restricted"}
+
+    if is_publishable:
+        for field in schema.get("publish_required_fields", []):
+            if field not in fm:
+                add(findings, "error", path, f"missing required publish field `{field}`")
+
+    if is_governed:
+        for field in schema.get("governed_required_fields", []):
+            if field not in fm:
+                add(findings, "error", path, f"missing required governed field `{field}`")
 
     for field, expected in schema.get("field_types", {}).items():
         if field in fm and not validate_type(fm[field], expected):
@@ -181,6 +227,8 @@ def validate_frontmatter(path: Path, schema: dict[str, Any]) -> list[Finding]:
             for target in publish_targets:
                 if target not in schema["publish_targets"]:
                     add(findings, "error", path, f"unsupported publish target `{target}`")
+
+    findings.extend(validate_asset_links(path, repo_root, is_publishable))
 
     return findings
 
@@ -204,6 +252,7 @@ def main() -> int:
     args = parser.parse_args()
 
     docs_root = Path(args.docs_root).resolve()
+    repo_root = docs_root.parent
     config_path = Path(args.config).resolve() if args.config else docs_root / "docs.config.yaml"
     schema_dir = Path(args.schema_dir).resolve()
 
@@ -222,7 +271,7 @@ def main() -> int:
         findings.extend(validate_docs_config(config_path, config_schema))
 
     for md_file in iter_markdown_files(docs_root):
-        findings.extend(validate_frontmatter(md_file, frontmatter_schema))
+        findings.extend(validate_frontmatter(md_file, frontmatter_schema, repo_root))
 
     error_count = sum(1 for item in findings if item.severity == "error")
     warning_count = sum(1 for item in findings if item.severity == "warning")

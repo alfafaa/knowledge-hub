@@ -57,6 +57,7 @@ Those outputs contain real deployable assets such as:
 - `postscript.js`
 - `static/`
 - nested HTML pages for the generated docs
+- linked documentation assets such as images and PDFs when they are mirrored with the owning document
 
 ## Quartz App Adjustments
 
@@ -82,3 +83,7 @@ Treat this as the canonical publish path:
 - source markdown lives in repos and the hub
 - Quartz workspaces remain an intermediate content stage
 - rendered static output is the deployable runtime artifact
+
+For media-specific behavior, see:
+
+- [Media And Asset Handling](docs/media-and-asset-handling.md)

@@ -71,6 +71,7 @@ These handle:
 - destination path mapping
 - mirrored writes into the hub
 - indexed-doc catalog generation
+- linked local asset mirroring for mirrored Markdown docs
 
 ### 4. Publish Planning and Quartz Preparation
 
@@ -113,6 +114,24 @@ These outputs contain:
 - CSS
 - JS
 - Quartz static assets
+- linked documentation assets mirrored from source repos
+
+### 5a. Media And Asset Handling
+
+The pipeline now supports local linked assets for mirrored Markdown docs.
+
+That means images, PDFs, and similar files linked from a mirrored page can now flow through:
+
+1. project repo docs
+2. hub mirror
+3. audience staging
+4. Quartz render output
+5. deployed runtime
+6. incremental `--changed` sync mode when only the asset file changed
+
+Reference:
+
+- [docs/media-and-asset-handling.md](/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/docs/media-and-asset-handling.md)
 
 ### 6. Deployment Planning and Packaging
 
@@ -332,6 +351,7 @@ The system is now in a working staging state, but not yet at full production mat
 - add generated landing pages with richer summaries
 - improve Quartz theme and branding
 - improve navigation structure and audience-specific landing pages
+- add broken-link validation for local asset references
 
 ## Recommended Next Step
 

@@ -2,11 +2,29 @@
   "counts": {
     "catalog_only": 0,
     "generated_catalog_pages": 1,
-    "staged": 3,
-    "total": 4
+    "staged": 5,
+    "total": 6
   },
   "display_name": "Alfafaa Knowledge Hub",
   "items": [
+    {
+      "action": "mirrored-asset",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/02-architecture/system-design.assets/billing-flow.svg",
+      "id": null,
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/02-architecture/system-design.assets/billing-flow.svg",
+      "stage_status": "staged",
+      "staged_content": "build/sites/engineering-site/content/03-projects/billing-modernization/02-architecture/system-design.assets/billing-flow.svg",
+      "title": "billing-flow.svg",
+      "type": "asset",
+      "visibility": "internal"
+    },
     {
       "action": "mirrored",
       "audience": "engineering",
@@ -59,6 +77,24 @@
       "staged_content": "build/sites/engineering-site/content/03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md",
       "title": "Payment Recovery Runbook",
       "type": "runbook",
+      "visibility": "internal"
+    },
+    {
+      "action": "mirrored-asset",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/98-meta/assets/architecture/billing-flow.svg",
+      "id": null,
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/98-meta/assets/architecture/billing-flow.svg",
+      "stage_status": "staged",
+      "staged_content": "build/sites/engineering-site/content/03-projects/billing-modernization/98-meta/assets/architecture/billing-flow.svg",
+      "title": "billing-flow.svg",
+      "type": "asset",
       "visibility": "internal"
     },
     {

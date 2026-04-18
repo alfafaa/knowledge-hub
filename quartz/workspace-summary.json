@@ -11,7 +11,7 @@
     },
     "engineering-site": {
       "workspace": "quartz/workspaces/engineering-site",
-      "generatedFiles": 4
+      "generatedFiles": 6
     },
     "admin-site": {
       "workspace": "quartz/workspaces/admin-site",

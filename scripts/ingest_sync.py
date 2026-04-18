@@ -6,7 +6,7 @@ import shutil
 from pathlib import Path
 from typing import Any
 
-from sync_lib import compute_plans, dump_json, load_yaml, parse_frontmatter
+from sync_lib import compute_plans, dump_json, extract_asset_references, load_yaml, parse_frontmatter
 
 
 def load_existing_catalog(path: Path) -> dict[str, Any]:
@@ -35,6 +35,59 @@ def write_mirrored_file(source_repo_root: Path, workspace_root: Path, plan: dict
         "destination": plan["destination"],
         "action": "mirrored",
     }
+
+
+def is_asset_candidate(path: Path) -> bool:
+    return path.is_file() and path.suffix.lower() != ".md"
+
+
+def copy_linked_assets(
+    source_repo_root: Path,
+    workspace_root: Path,
+    repo_name: str,
+    plan: dict[str, Any],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    source_doc = source_repo_root / plan["source"]
+    dest_doc = workspace_root / plan["destination"]
+    asset_entries: list[dict[str, Any]] = []
+    skipped_assets: list[dict[str, Any]] = []
+
+    for ref in extract_asset_references(source_doc):
+        source_asset = (source_doc.parent / ref).resolve()
+
+        try:
+            source_asset.relative_to(source_repo_root)
+        except ValueError:
+            skipped_assets.append({"source": plan["source"], "asset": ref, "reason": "asset path escapes repository root"})
+            continue
+
+        if not is_asset_candidate(source_asset):
+            continue
+
+        dest_asset = (dest_doc.parent / ref).resolve()
+        dest_asset.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source_asset, dest_asset)
+
+        asset_entries.append(
+            {
+                "repo_name": repo_name,
+                "source": source_asset.relative_to(source_repo_root).as_posix(),
+                "destination": dest_asset.relative_to(workspace_root).as_posix(),
+                "action": "mirrored-asset",
+                "title": source_asset.name,
+                "id": None,
+                "type": "asset",
+                "visibility": plan.get("visibility"),
+                "audience": plan.get("audience"),
+                "publish": plan.get("publish"),
+                "publish_targets": plan.get("publish_targets", []),
+                "product": plan.get("product"),
+                "project": plan.get("project"),
+                "linked_from": plan["source"],
+            }
+        )
+
+    return asset_entries, skipped_assets
 
 
 def catalog_entry(repo_name: str, frontmatter: dict[str, Any], plan: dict[str, Any]) -> dict[str, Any]:
@@ -88,6 +141,8 @@ def main() -> int:
     mirrored: list[dict[str, Any]] = []
     indexed: list[dict[str, Any]] = []
     skipped: list[dict[str, Any]] = []
+    mirrored_assets: list[dict[str, Any]] = []
+    skipped_assets: list[dict[str, Any]] = []
 
     catalog_path = (workspace_root / args.catalog_path).resolve()
     existing_catalog = load_existing_catalog(catalog_path)
@@ -105,6 +160,12 @@ def main() -> int:
 
         if plan["action"] == "mirrored":
             mirrored.append(write_mirrored_file(source_repo_root, workspace_root, plan))
+            if source_abs.suffix.lower() == ".md":
+                asset_entries, asset_skips = copy_linked_assets(source_repo_root, workspace_root, repo_name, plan)
+                mirrored_assets.extend(asset_entries)
+                skipped_assets.extend(asset_skips)
+                for asset_entry in asset_entries:
+                    upsert_catalog_item(items, asset_entry)
         elif plan["action"] == "indexed-only":
             indexed.append(plan)
         elif plan["action"] == "local-only":
@@ -120,16 +181,19 @@ def main() -> int:
         "repo_name": repo_name,
         "docs_root": str(docs_root),
         "mirrored_count": len(mirrored),
+        "mirrored_asset_count": len(mirrored_assets),
         "indexed_count": len(indexed),
         "skipped_count": len(skipped),
         "mirrored": mirrored,
+        "mirrored_assets": mirrored_assets,
         "indexed": indexed,
         "skipped": skipped,
+        "skipped_assets": skipped_assets,
     }
     dump_json(report, (workspace_root / args.report_path).resolve())
 
     print(
-        f"ingestion complete: mirrored={len(mirrored)} indexed={len(indexed)} skipped={len(skipped)} "
+        f"ingestion complete: mirrored={len(mirrored)} assets={len(mirrored_assets)} indexed={len(indexed)} skipped={len(skipped)} "
         f"catalog={catalog_path.relative_to(workspace_root)}"
     )
     return 0

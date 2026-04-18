@@ -160,7 +160,7 @@ def main() -> int:
                 "stage_status": "catalog-only",
             }
 
-            if item.get("action") == "mirrored":
+            if item.get("action") in {"mirrored", "mirrored-asset"}:
                 staged = stage_mirrored_content(workspace_root, target_site_root, item)
                 if staged:
                     entry["staged_content"] = staged

@@ -30,8 +30,8 @@ Use these settings as the default team convention:
 - default new notes location:
   - current folder when working inside a domain
 - attachment location:
-  - prefer folder-specific or page-near assets for local content
-  - use `98-meta/assets/` only for shared reusable media
+  - use `98-meta/assets/` as the default for repo-level assets so doc folders stay clean
+  - use page-near assets only when the media is tightly coupled to one page and portability matters more than cleanliness
 - auto-update internal links:
   - enabled
 - use wikilinks:
@@ -43,11 +43,12 @@ Use these settings as the default team convention:
 
 This is the most important convention for long-term cleanliness.
 
-### Use local colocated assets when:
+### Use local colocated assets only when:
 
 - an image belongs to one page or one small topic
 - a screenshot is specific to one guide
 - a diagram is used only by one document or one narrow folder
+- moving the page with its media as one unit matters more than keeping the folder visually clean
 
 Recommended pattern:
 
@@ -68,11 +69,12 @@ Or:
     step-2.png
 ```
 
-### Use `98-meta/assets/` when:
+### Use `98-meta/assets/` by default when:
 
 - the same asset is reused across many notes
 - the asset is generic and stable
 - the asset belongs to the workspace more than to one page
+- you want the visible docs tree to remain Markdown-focused
 
 Examples:
 
@@ -85,7 +87,8 @@ Examples:
 
 Use this rule:
 
-- page-specific asset -> keep near the page
+- repo asset by default -> `docs/98-meta/assets/`
+- page-specific asset exception -> keep near the page only when the coupling is genuinely tight
 - repo-wide shared asset -> `docs/98-meta/assets/`
 - company-wide shared asset -> `hub/98-meta/assets/`
 
@@ -274,6 +277,12 @@ If portability is more important, prefer standard markdown:
 ![Context diagram](./system-design.assets/context-diagram.png)
 ```
 
+If cleanliness is more important and the asset is repo-level, prefer:
+
+```markdown
+![Context diagram](../98-meta/assets/architecture/context-diagram.png)
+```
+
 My recommendation:
 
 - use standard markdown image links for published docs
@@ -295,7 +304,7 @@ Recommended:
 2. Navigate to the correct owning domain.
 3. Create or edit the note using the appropriate template.
 4. Add frontmatter correctly.
-5. Place assets locally or in `98-meta/assets/` based on reuse.
+5. Place assets in `98-meta/assets/` by default, and use page-near assets only for narrow exceptions.
 6. Link to stable notes only.
 7. Let sync and publishing automation handle distribution.
 
@@ -304,6 +313,7 @@ Recommended:
 - Use Obsidian as the writing experience.
 - Use the folder structure as the ownership model.
 - Use `_index.md` as the folder note convention.
-- Use local assets by default and shared assets only when truly shared.
+- Use `98-meta/assets/` as the default clean asset location.
+- Use page-near assets only when the document and media should travel together as one unit.
 - Use `98-meta/` for workspace support, not for normal content.
 - Keep everything Quartz-compatible by favoring standard markdown and frontmatter.

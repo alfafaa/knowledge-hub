@@ -41,6 +41,8 @@ It is responsible for:
 4. The result is persisted as a new ledger event.
 5. Recovery workers evaluate failed attempts and schedule follow-up actions.
 
+![Billing flow diagram](../98-meta/assets/architecture/billing-flow.svg)
+
 ## Boundaries
 
 - This service owns charge-event history.

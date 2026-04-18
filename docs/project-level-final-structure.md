@@ -474,13 +474,22 @@ Do not use for:
 
 Use for:
 
+- the default location for repo-level diagrams, screenshots, PDFs, and other doc media
 - repeated diagrams
 - shared screenshots
 - repo-wide icons or visuals
+- keeping visible docs folders clean and Markdown-focused
 
 Do not use for:
 
-- media used by only one page when local colocated assets are clearer
+- normal content pages
+- dumping unrelated files without naming discipline
+
+Use page-near asset folders only when:
+
+- one document owns the asset completely
+- the media and document should move together as one unit
+- that local coupling is clearer than the default shared asset location
 
 ## Large-Scale Extension Profile
 

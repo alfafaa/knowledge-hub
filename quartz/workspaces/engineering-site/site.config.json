@@ -4,5 +4,5 @@
   "contentRoot": "content",
   "sourceManifest": "build/manifests/engineering-site.json",
   "sourceContentRoot": "build/sites/engineering-site/content",
-  "generatedFiles": 4
+  "generatedFiles": 6
 }

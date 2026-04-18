@@ -1,12 +1,16 @@
 required_fields:
-  - id
   - title
   - type
-  - audience
-  - visibility
   - status
+
+publish_required_fields:
   - owner
   - publish
+  - audience
+  - visibility
+  - publish_targets
+
+governed_required_fields:
   - last_reviewed
   - review_cycle_days
 

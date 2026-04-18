@@ -1,6 +1,24 @@
 {
   "items": [
     {
+      "action": "mirrored-asset",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/02-architecture/system-design.assets/billing-flow.svg",
+      "id": null,
+      "linked_from": "docs/02-architecture/system-design.md",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish": true,
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/02-architecture/system-design.assets/billing-flow.svg",
+      "title": "billing-flow.svg",
+      "type": "asset",
+      "visibility": "internal"
+    },
+    {
       "action": "mirrored",
       "audience": "engineering",
       "destination": "hub/03-projects/billing-modernization/02-architecture/system-design.md",
@@ -84,6 +102,24 @@
       "title": "Billing Getting Started",
       "type": "guide",
       "visibility": "public"
+    },
+    {
+      "action": "mirrored-asset",
+      "audience": "engineering",
+      "destination": "hub/03-projects/billing-modernization/98-meta/assets/architecture/billing-flow.svg",
+      "id": null,
+      "linked_from": "docs/02-architecture/system-design.md",
+      "product": "billing",
+      "project": "billing-modernization",
+      "publish": true,
+      "publish_targets": [
+        "engineering-site"
+      ],
+      "repo_name": "billing-service",
+      "source": "docs/98-meta/assets/architecture/billing-flow.svg",
+      "title": "billing-flow.svg",
+      "type": "asset",
+      "visibility": "internal"
     },
     {
       "action": "indexed-only",
