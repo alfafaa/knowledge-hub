@@ -105,6 +105,51 @@ def extract_asset_references(markdown_path: Path) -> list[str]:
     return deduped
 
 
+def rewrite_asset_links_for_quartz(markdown_path: Path, content_root: Path) -> bool:
+    text = markdown_path.read_text(encoding="utf-8")
+    changed = False
+
+    def asset_url(ref: str) -> str | None:
+        normalized = normalize_link_target(ref)
+        if not normalized or is_external_reference(normalized):
+            return None
+        resolved = (markdown_path.parent / normalized).resolve()
+        try:
+            resolved.relative_to(content_root.resolve())
+        except ValueError:
+            return None
+        if not resolved.is_file() or resolved.suffix.lower() == ".md":
+            return None
+        return "/" + resolved.relative_to(content_root.resolve()).as_posix()
+
+    def replace_markdown(match: re.Match[str]) -> str:
+        nonlocal changed
+        original = match.group(0)
+        ref = match.group(1) or match.group(2) or ""
+        url = asset_url(ref)
+        if not url:
+            return original
+        changed = True
+        return original.replace(ref, url, 1)
+
+    def replace_obsidian(match: re.Match[str]) -> str:
+        nonlocal changed
+        ref = match.group(1)
+        url = asset_url(ref)
+        if not url:
+            return match.group(0)
+        changed = True
+        return f"![]({url})"
+
+    rewritten = MARKDOWN_LINK_RE.sub(replace_markdown, text)
+    rewritten = OBSIDIAN_LINK_RE.sub(replace_obsidian, rewritten)
+
+    if changed:
+        markdown_path.write_text(rewritten, encoding="utf-8")
+
+    return changed
+
+
 def markdown_references_asset(markdown_path: Path, asset_path: Path) -> bool:
     for ref in extract_asset_references(markdown_path):
         resolved = (markdown_path.parent / ref).resolve()

@@ -7,6 +7,7 @@
       "build_content_root": "build/quartz-sources/public-site/content",
       "site_root": "build/rendered/public-site",
       "copiedFiles": 1,
+      "rewrittenMarkdownFiles": 0,
       "generatedFiles": 18,
       "ok": true,
       "command": [
@@ -18,7 +19,7 @@
         "-o",
         "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/public-site"
       ],
-      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/public-site` in 21ms\nFound 2 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/public-site/content` in 37ms\nParsing input files using 1 threads\n\nWarning: found invalid date \"0\" in `06-support/public-kb/billing/getting-started.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 2 Markdown files in 358ms\nFiltered out 0 files in 106\u03bcs\nEmitting files\nEmitted 18 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/public-site` in 343ms\nDone processing 2 files in 765ms\n",
+      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/public-site` in 21ms\nFound 2 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/public-site/content` in 35ms\nParsing input files using 1 threads\n\nWarning: found invalid date \"0\" in `06-support/public-kb/billing/getting-started.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 2 Markdown files in 371ms\nFiltered out 0 files in 150\u03bcs\nEmitting files\nEmitted 18 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/public-site` in 385ms\nDone processing 2 files in 817ms\n",
       "stderr": "(node:8) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"
     },
     "internal-site": {
@@ -27,6 +28,7 @@
       "build_content_root": "build/quartz-sources/internal-site/content",
       "site_root": "build/rendered/internal-site",
       "copiedFiles": 1,
+      "rewrittenMarkdownFiles": 0,
       "generatedFiles": 18,
       "ok": true,
       "command": [
@@ -38,7 +40,7 @@
         "-o",
         "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/internal-site"
       ],
-      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/internal-site` in 19ms\nFound 2 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/internal-site/content` in 35ms\nParsing input files using 1 threads\n\nWarning: found invalid date \"0\" in `06-support/internal-kb/billing/approval-workflow.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 2 Markdown files in 339ms\nFiltered out 0 files in 109\u03bcs\nEmitting files\nEmitted 18 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/internal-site` in 363ms\nDone processing 2 files in 762ms\n",
+      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/internal-site` in 21ms\nFound 2 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/internal-site/content` in 38ms\nParsing input files using 1 threads\n\nWarning: found invalid date \"0\" in `06-support/internal-kb/billing/approval-workflow.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 2 Markdown files in 363ms\nFiltered out 0 files in 104\u03bcs\nEmitting files\nEmitted 18 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/internal-site` in 377ms\nDone processing 2 files in 805ms\n",
       "stderr": "(node:76) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"
     },
     "engineering-site": {
@@ -47,6 +49,7 @@
       "build_content_root": "build/quartz-sources/engineering-site/content",
       "site_root": "build/rendered/engineering-site",
       "copiedFiles": 6,
+      "rewrittenMarkdownFiles": 1,
       "generatedFiles": 25,
       "ok": true,
       "command": [
@@ -58,8 +61,8 @@
         "-o",
         "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/engineering-site"
       ],
-      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/engineering-site` in 83ms\nFound 5 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/engineering-site/content` in 35ms\nParsing input files using 1 threads\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/02-architecture/system-design.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/_index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 5 Markdown files in 436ms\nFiltered out 0 files in 158\u03bcs\nEmitting files\nEmitted 25 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/engineering-site` in 363ms\nDone processing 5 files in 923ms\n",
-      "stderr": "(node:144) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"
+      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/engineering-site` in 44ms\nFound 5 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/engineering-site/content` in 65ms\nParsing input files using 1 threads\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/02-architecture/system-design.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/05-operations/runbooks/payment-recovery.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `03-projects/billing-modernization/_index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 5 Markdown files in 480ms\nFiltered out 0 files in 150\u03bcs\nEmitting files\nEmitted 25 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/engineering-site` in 397ms\nDone processing 5 files in 994ms\n",
+      "stderr": "(node:145) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"
     },
     "admin-site": {
       "workspace": "quartz/workspaces/admin-site",
@@ -67,6 +70,7 @@
       "build_content_root": "build/quartz-sources/admin-site/content",
       "site_root": "build/rendered/admin-site",
       "copiedFiles": 0,
+      "rewrittenMarkdownFiles": 0,
       "generatedFiles": 14,
       "ok": true,
       "command": [
@@ -78,8 +82,8 @@
         "-o",
         "/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/admin-site"
       ],
-      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/admin-site` in 19ms\nFound 1 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/admin-site/content` in 29ms\nParsing input files using 1 threads\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 1 Markdown files in 290ms\nFiltered out 0 files in 111\u03bcs\nEmitting files\nEmitted 14 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/admin-site` in 360ms\nDone processing 1 files in 703ms\n",
-      "stderr": "(node:207) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"
+      "stdout": "\n Quartz v4.5.2  \n\nCleaned output directory `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/admin-site` in 22ms\nFound 1 input files from `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/quartz-sources/admin-site/content` in 30ms\nParsing input files using 1 threads\n\nWarning: found invalid date \"0\" in `index.md`. Supported formats: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format\nParsed 1 Markdown files in 305ms\nFiltered out 0 files in 160\u03bcs\nEmitting files\nEmitted 14 files to `/media/sibbir/MyDrive/Projects/Office/Alfafaa/knowledge-hub/build/rendered/admin-site` in 377ms\nDone processing 1 files in 740ms\n",
+      "stderr": "(node:214) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"
     }
   }
 }

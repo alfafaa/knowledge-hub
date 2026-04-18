@@ -10,7 +10,7 @@
     <link>https://engineering-site.localhost/03-projects/billing-modernization/02-architecture/system-design</link>
     <guid>https://engineering-site.localhost/03-projects/billing-modernization/02-architecture/system-design</guid>
     <description><![CDATA[ Billing System Design Purpose The billing service records charge attempts, payment outcomes, and recovery actions for subscription events. ]]></description>
-    <pubDate>Sat, 18 Apr 2026 06:24:04 GMT</pubDate>
+    <pubDate>Sat, 18 Apr 2026 07:35:05 GMT</pubDate>
   </item><item>
     <title>Use Ledger Table For Charge Events</title>
     <link>https://engineering-site.localhost/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table</link>

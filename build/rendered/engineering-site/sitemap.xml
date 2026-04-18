@@ -1,6 +1,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
     <loc>https://engineering-site.localhost/03-projects/billing-modernization/02-architecture/system-design</loc>
-    <lastmod>2026-04-18T06:24:04.000Z</lastmod>
+    <lastmod>2026-04-18T07:35:05.000Z</lastmod>
   </url><url>
     <loc>https://engineering-site.localhost/03-projects/billing-modernization/03-decisions/adr-001-use-ledger-table</loc>
     <lastmod>2026-04-18T06:24:04.000Z</lastmod>

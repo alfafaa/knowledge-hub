@@ -10,6 +10,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from sync_lib import rewrite_asset_links_for_quartz
+
 
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -88,6 +90,14 @@ def count_files(path: Path) -> int:
     return sum(1 for item in path.rglob("*") if item.is_file())
 
 
+def rewrite_markdown_asset_links(content_root: Path) -> int:
+    changed = 0
+    for markdown_path in sorted(path for path in content_root.rglob("*.md") if path.is_file()):
+        if rewrite_asset_links_for_quartz(markdown_path, content_root):
+            changed += 1
+    return changed
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build Quartz static sites from prepared workspaces.")
     parser.add_argument("--workspace-summary", default="quartz/workspace-summary.json", help="Quartz workspace summary")
@@ -128,6 +138,7 @@ def main() -> int:
         ensure_clean_dir(build_content_root)
         copied_files = copy_tree_contents(source_content, build_content_root)
         write_root_index(build_content_root, display_name, target)
+        rewritten_files = rewrite_markdown_asset_links(build_content_root)
 
         env = os.environ.copy()
         env["QUARTZ_PAGE_TITLE"] = target_title(display_name, target)
@@ -161,6 +172,7 @@ def main() -> int:
             "build_content_root": str(build_content_root.relative_to(workspace_root)),
             "site_root": str(build_output_root.relative_to(workspace_root)),
             "copiedFiles": copied_files,
+            "rewrittenMarkdownFiles": rewritten_files,
             "generatedFiles": generated_files,
             "ok": ok,
             "command": cmd,
