@@ -19,6 +19,7 @@ The recommended long-term approach is:
 - [Automation Architecture](docs/automation-architecture.md)
 - [Final Implementation Plan](docs/final-implementation-plan.md)
 - [Project Starter Template Rollout Plan](docs/project-starter-template-rollout-plan.md)
+- [Project Starter Template Publish Workflow](docs/project-starter-template-publish-workflow.md)
 - [Scalability Assessment And Next Scale Steps](docs/scalability-assessment-and-next-scale-steps.md)
 - [Where Docs Physically Live And Flow](docs/where-docs-physically-live-and-flow.md)
 - [Domain And Site URL Strategy](docs/domain-and-site-url-strategy.md)

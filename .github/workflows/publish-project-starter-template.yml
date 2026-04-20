@@ -1,0 +1,149 @@
+name: Publish Project Starter Template
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_repository:
+        description: "Target repository that should mirror the starter template"
+        required: true
+        default: "alfafaa/project-starter-template"
+        type: string
+      target_branch:
+        description: "Branch to replace in the target repository"
+        required: true
+        default: "main"
+        type: string
+      create_release_zip:
+        description: "Create a GitHub Release in the target repository with a zip asset"
+        required: true
+        default: false
+        type: boolean
+      release_tag:
+        description: "Optional release tag. Leave empty to auto-generate when release zip is enabled"
+        required: false
+        default: ""
+        type: string
+      release_title:
+        description: "Optional release title. Leave empty to auto-generate"
+        required: false
+        default: ""
+        type: string
+
+jobs:
+  publish-starter-template:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout knowledge hub repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependency
+        run: python -m pip install pyyaml
+
+      - name: Validate starter template docs
+        run: python3 scripts/validate_docs.py --docs-root starter-templates/project-starter-template-repo/docs
+
+      - name: Export starter template
+        shell: bash
+        run: |
+          set -euo pipefail
+          export_args=(--output-dir build/starter-template-export)
+          if [ "${{ inputs.create_release_zip }}" = "true" ]; then
+            export_args+=(--zip-path build/starter-template-release/project-starter-template.zip)
+          fi
+          python3 scripts/export_project_starter_template.py "${export_args[@]}"
+
+      - name: Resolve release metadata
+        id: release
+        shell: bash
+        run: |
+          ts="$(date -u +%Y%m%d-%H%M%S)"
+          tag="${{ inputs.release_tag }}"
+          title="${{ inputs.release_title }}"
+
+          if [ -z "$tag" ]; then
+            tag="project-starter-template-$ts"
+          fi
+          if [ -z "$title" ]; then
+            title="Project Starter Template $ts"
+          fi
+
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "title=$title" >> "$GITHUB_OUTPUT"
+
+      - name: Publish strict mirror to target repository
+        env:
+          GH_TOKEN: ${{ secrets.PROJECT_STARTER_TEMPLATE_PUSH_TOKEN }}
+          TARGET_REPOSITORY: ${{ inputs.target_repository }}
+          TARGET_BRANCH: ${{ inputs.target_branch }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "Missing required secret PROJECT_STARTER_TEMPLATE_PUSH_TOKEN" >&2
+            exit 1
+          fi
+
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          target_dir="$RUNNER_TEMP/project-starter-template-target"
+          rm -rf "$target_dir"
+
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/${TARGET_REPOSITORY}.git" "$target_dir"
+          cd "$target_dir"
+          git checkout "$TARGET_BRANCH" || git checkout -b "$TARGET_BRANCH"
+
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.git' \
+            -exec rm -rf {} +
+
+          cp -R "$GITHUB_WORKSPACE/build/starter-template-export/." "$target_dir/"
+
+          if [ -z "$(git status --short)" ]; then
+            echo "No starter template changes to publish."
+            exit 0
+          fi
+
+          git add --all
+          git commit -m "Publish starter template from knowledge hub"
+          git push origin "HEAD:${TARGET_BRANCH}"
+
+      - name: Create target repository release
+        if: ${{ inputs.create_release_zip }}
+        env:
+          GH_TOKEN: ${{ secrets.PROJECT_STARTER_TEMPLATE_PUSH_TOKEN }}
+          TARGET_REPOSITORY: ${{ inputs.target_repository }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
+          RELEASE_TITLE: ${{ steps.release.outputs.title }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "Missing required secret PROJECT_STARTER_TEMPLATE_PUSH_TOKEN" >&2
+            exit 1
+          fi
+
+          gh release create "$RELEASE_TAG" \
+            "build/starter-template-release/project-starter-template.zip" \
+            --repo "$TARGET_REPOSITORY" \
+            --title "$RELEASE_TITLE" \
+            --notes "Release generated from the Alfafaa Knowledge Hub starter template publish workflow."
+
+      - name: Upload publish artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-starter-template-publish
+          path: |
+            build/starter-template-export/
+            build/starter-template-release/
+          if-no-files-found: error
