@@ -18,6 +18,11 @@ The recommended long-term approach is:
 - [Documentation Standards](docs/documentation-standards.md)
 - [Automation Architecture](docs/automation-architecture.md)
 - [Final Implementation Plan](docs/final-implementation-plan.md)
+- [Project Starter Template Rollout Plan](docs/project-starter-template-rollout-plan.md)
+- [Scalability Assessment And Next Scale Steps](docs/scalability-assessment-and-next-scale-steps.md)
+- [Where Docs Physically Live And Flow](docs/where-docs-physically-live-and-flow.md)
+- [Domain And Site URL Strategy](docs/domain-and-site-url-strategy.md)
+- [Source Repo Manual Sync To Knowledge Hub](docs/source-repo-manual-sync-to-knowledge-hub.md)
 
 ## Canonical Runtime Naming
 

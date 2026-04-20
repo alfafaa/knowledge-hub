@@ -1,0 +1,11 @@
+# Common local/editor noise
+.DS_Store
+.idea/
+.vscode/
+
+# Example runtime noise
+node_modules/
+dist/
+build/
+coverage/
+

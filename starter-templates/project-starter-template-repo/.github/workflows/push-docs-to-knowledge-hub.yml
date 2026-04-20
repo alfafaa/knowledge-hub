@@ -1,0 +1,61 @@
+name: Push Docs To Knowledge Hub
+
+on:
+  workflow_dispatch:
+    inputs:
+      docs_root:
+        description: "Docs root relative to the repository"
+        required: true
+        default: "docs"
+        type: string
+      config_path:
+        description: "Optional docs config path relative to the repository"
+        required: false
+        default: "docs/docs.config.yaml"
+        type: string
+      source_ref:
+        description: "Git ref to send to the knowledge hub. Leave blank to use the current ref."
+        required: false
+        default: ""
+        type: string
+
+jobs:
+  request-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Send sync request to the knowledge hub
+        uses: actions/github-script@v7
+        env:
+          HUB_OWNER: ${{ secrets.KNOWLEDGE_HUB_OWNER }}
+          HUB_REPO: ${{ secrets.KNOWLEDGE_HUB_REPO }}
+          SOURCE_REF: ${{ inputs.source_ref }}
+          DOCS_ROOT: ${{ inputs.docs_root }}
+          CONFIG_PATH: ${{ inputs.config_path }}
+        with:
+          github-token: ${{ secrets.KNOWLEDGE_HUB_TRIGGER_TOKEN }}
+          script: |
+            const owner = process.env.HUB_OWNER
+            const repo = process.env.HUB_REPO
+            const sourceRef = process.env.SOURCE_REF || context.ref.replace("refs/heads/", "")
+            if (!owner || !repo) {
+              core.setFailed("KNOWLEDGE_HUB_OWNER and KNOWLEDGE_HUB_REPO must be configured")
+              return
+            }
+
+            await github.request("POST /repos/{owner}/{repo}/dispatches", {
+              owner,
+              repo,
+              event_type: "source-docs-sync-requested",
+              client_payload: {
+                source_repository: context.repo.owner + "/" + context.repo.repo,
+                source_ref: sourceRef,
+                docs_root: process.env.DOCS_ROOT,
+                config_path: process.env.CONFIG_PATH,
+                requested_by: context.actor
+              }
+            })
+
+            core.info(`Requested knowledge hub sync for ${context.repo.owner}/${context.repo.repo}@${sourceRef}`)
