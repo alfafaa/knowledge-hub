@@ -12,11 +12,66 @@ import yaml
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 MARKDOWN_LINK_RE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)|\[[^\]]+\]\(([^)]+)\)")
 OBSIDIAN_LINK_RE = re.compile(r"!\[\[([^\]]+)\]\]")
+PLACEHOLDER_PATTERN = re.compile(r"\{(repo_name|project_slug)\}")
 
 
 def load_yaml(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
         return yaml.safe_load(handle)
+
+
+def slugify(value: str) -> str:
+    slug = re.sub(r"[^a-zA-Z0-9]+", "-", value.strip().lower())
+    slug = re.sub(r"-{2,}", "-", slug).strip("-")
+    return slug or "unknown-repo"
+
+
+def infer_repo_name(repo_root: Path) -> str:
+    return slugify(repo_root.name)
+
+
+def is_auto_value(value: Any) -> bool:
+    if not isinstance(value, str):
+        return False
+    normalized = value.strip()
+    return normalized in {"repo-slug", "project-slug", "{repo_name}", "{project_slug}", "__AUTO__", "__AUTO_REPO_NAME__", "__AUTO_PROJECT_SLUG__"}
+
+
+def replace_placeholders(value: str, repo_name: str, project_slug: str) -> str:
+    replaced = value.replace("repo-slug", repo_name).replace("project-slug", project_slug)
+    return PLACEHOLDER_PATTERN.sub(lambda match: repo_name if match.group(1) == "repo_name" else project_slug, replaced)
+
+
+def resolve_placeholders(data: Any, repo_name: str, project_slug: str) -> Any:
+    if isinstance(data, dict):
+        return {key: resolve_placeholders(value, repo_name, project_slug) for key, value in data.items()}
+    if isinstance(data, list):
+        return [resolve_placeholders(item, repo_name, project_slug) for item in data]
+    if isinstance(data, str):
+        return replace_placeholders(data, repo_name, project_slug)
+    return data
+
+
+def load_docs_config(path: Path, docs_root: Path | None = None) -> dict[str, Any]:
+    raw = load_yaml(path) or {}
+    config = raw if isinstance(raw, dict) else {}
+
+    repo_root = docs_root.parent.resolve() if docs_root else path.parent.parent.resolve()
+    inferred_repo_name = infer_repo_name(repo_root)
+
+    configured_repo_name = config.get("repo_name")
+    repo_name = inferred_repo_name if configured_repo_name is None or is_auto_value(configured_repo_name) else slugify(str(configured_repo_name))
+
+    configured_project_slug = config.get("project_slug") or config.get("project")
+    if configured_project_slug is None or is_auto_value(configured_project_slug):
+        project_slug = repo_name
+    else:
+        project_slug = slugify(str(configured_project_slug))
+
+    normalized = resolve_placeholders(config, repo_name, project_slug)
+    normalized["repo_name"] = repo_name
+    normalized["project_slug"] = project_slug
+    return normalized
 
 
 def parse_frontmatter(path: Path) -> dict[str, Any]:

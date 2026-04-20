@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 
 import yaml
-from sync_lib import extract_asset_references
+from sync_lib import extract_asset_references, load_docs_config
 
 
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
@@ -81,7 +81,7 @@ def is_asset_reference(ref: str) -> bool:
 def validate_docs_config(path: Path, schema: dict[str, Any]) -> list[Finding]:
     findings: list[Finding] = []
     try:
-        data = load_yaml(path) or {}
+        data = load_docs_config(path, path.parent)
     except Exception as exc:  # noqa: BLE001
         add(findings, "error", path, f"could not parse YAML: {exc}")
         return findings

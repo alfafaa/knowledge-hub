@@ -1,4 +1,4 @@
-repo_type: service
+repo_type: frontend-app
 repo_name: __AUTO_REPO_NAME__
 project_slug: __AUTO_PROJECT_SLUG__
 docs_version: 1
@@ -16,8 +16,8 @@ structure:
   recommended:
     - 00-overview
     - 08-quality
-    - 09-knowledge
   optional:
+    - 09-knowledge
     - 10-integrations
     - 11-guides
     - 98-meta
@@ -35,15 +35,15 @@ sync:
     - "docs/_index.md"
     - "docs/02-architecture/**"
     - "docs/03-decisions/**"
+    - "docs/04-development/**"
     - "docs/05-operations/**"
     - "docs/06-reference/**"
     - "docs/07-release/**"
-    - "docs/09-knowledge/**"
+    - "docs/08-quality/**"
     - "docs/11-guides/**"
   exclude:
     - "docs/**/drafts/**"
     - "docs/**/scratch/**"
-    - "docs/01-getting-started/private/**"
     - "docs/98-meta/workspace-notes/**"
     - "docs/90-archive/**"
   overrides:
@@ -55,13 +55,6 @@ sync:
       publish_targets:
         - engineering-site
     "docs/03-decisions/**":
-      sync_mode: mirrored
-      visibility: internal
-      audience: engineering
-      publish: true
-      publish_targets:
-        - engineering-site
-    "docs/05-operations/runbooks/**":
       sync_mode: mirrored
       visibility: internal
       audience: engineering
@@ -91,19 +84,22 @@ sync:
         - engineering-site
   destinations:
     "docs/02-architecture/**":
-      hub_path: "hub/03-projects/{project_slug}/02-architecture/"
+      hub_path: "hub/02-products/{project_slug}/frontend/02-architecture/"
       project: "{project_slug}"
     "docs/03-decisions/**":
-      hub_path: "hub/03-projects/{project_slug}/03-decisions/"
+      hub_path: "hub/02-products/{project_slug}/frontend/03-decisions/"
+      project: "{project_slug}"
+    "docs/04-development/**":
+      hub_path: "hub/02-products/{project_slug}/frontend/04-development/"
       project: "{project_slug}"
     "docs/05-operations/**":
-      hub_path: "hub/03-projects/{project_slug}/05-operations/"
+      hub_path: "hub/02-products/{project_slug}/frontend/05-operations/"
       project: "{project_slug}"
     "docs/06-reference/**":
-      hub_path: "hub/03-projects/{project_slug}/06-reference/"
+      hub_path: "hub/02-products/{project_slug}/frontend/06-reference/"
       project: "{project_slug}"
     "docs/07-release/**":
-      hub_path: "hub/03-projects/{project_slug}/07-release/"
+      hub_path: "hub/02-products/{project_slug}/frontend/07-release/"
       project: "{project_slug}"
     "docs/11-guides/public/**":
       hub_path: "hub/06-support/public-kb/{project_slug}/"
@@ -112,7 +108,7 @@ sync:
       hub_path: "hub/06-support/internal-kb/{project_slug}/"
       project: "{project_slug}"
     "docs/11-guides/engineering/**":
-      hub_path: "hub/03-projects/{project_slug}/11-guides/engineering/"
+      hub_path: "hub/02-products/{project_slug}/frontend/11-guides/engineering/"
       project: "{project_slug}"
 
 approval:

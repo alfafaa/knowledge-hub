@@ -6,7 +6,7 @@ import shutil
 from pathlib import Path
 from typing import Any
 
-from sync_lib import compute_plans, dump_json, extract_asset_references, load_yaml, parse_frontmatter
+from sync_lib import compute_plans, dump_json, extract_asset_references, load_docs_config, load_yaml, parse_frontmatter
 
 
 def load_existing_catalog(path: Path) -> dict[str, Any]:
@@ -133,7 +133,7 @@ def main() -> int:
     docs_root = Path(args.docs_root).resolve()
     source_repo_root = docs_root.parent
     config_path = Path(args.config).resolve() if args.config else docs_root / "docs.config.yaml"
-    config = load_yaml(config_path)
+    config = load_docs_config(config_path, docs_root)
     repo_name = config.get("repo_name", "unknown-repo")
 
     plans = compute_plans(docs_root, config, args.changed)

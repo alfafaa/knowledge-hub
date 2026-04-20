@@ -2,7 +2,7 @@
 import argparse
 import json
 from pathlib import Path
-from sync_lib import compute_plans, load_yaml
+from sync_lib import compute_plans, load_docs_config
 
 
 def main() -> int:
@@ -19,7 +19,7 @@ def main() -> int:
 
     docs_root = Path(args.docs_root).resolve()
     config_path = Path(args.config).resolve() if args.config else docs_root / "docs.config.yaml"
-    config = load_yaml(config_path)
+    config = load_docs_config(config_path, docs_root)
     plans = compute_plans(docs_root, config, args.changed)
 
     if args.json:

@@ -1,4 +1,4 @@
-repo_type: service
+repo_type: internal-tool
 repo_name: __AUTO_REPO_NAME__
 project_slug: __AUTO_PROJECT_SLUG__
 docs_version: 1
@@ -16,8 +16,8 @@ structure:
   recommended:
     - 00-overview
     - 08-quality
-    - 09-knowledge
   optional:
+    - 09-knowledge
     - 10-integrations
     - 11-guides
     - 98-meta
@@ -25,10 +25,10 @@ structure:
 defaults:
   sync_mode: indexed-only
   visibility: internal
-  audience: engineering
+  audience: internal
   publish: false
   publish_targets:
-    - engineering-site
+    - internal-site
 
 sync:
   include:
@@ -38,12 +38,10 @@ sync:
     - "docs/05-operations/**"
     - "docs/06-reference/**"
     - "docs/07-release/**"
-    - "docs/09-knowledge/**"
     - "docs/11-guides/**"
   exclude:
     - "docs/**/drafts/**"
     - "docs/**/scratch/**"
-    - "docs/01-getting-started/private/**"
     - "docs/98-meta/workspace-notes/**"
     - "docs/90-archive/**"
   overrides:
@@ -61,20 +59,13 @@ sync:
       publish: true
       publish_targets:
         - engineering-site
-    "docs/05-operations/runbooks/**":
+    "docs/05-operations/**":
       sync_mode: mirrored
       visibility: internal
-      audience: engineering
+      audience: internal
       publish: true
       publish_targets:
-        - engineering-site
-    "docs/11-guides/public/**":
-      sync_mode: mirrored
-      visibility: public
-      audience: public
-      publish: true
-      publish_targets:
-        - public-site
+        - internal-site
     "docs/11-guides/internal/**":
       sync_mode: mirrored
       visibility: internal
@@ -82,13 +73,13 @@ sync:
       publish: true
       publish_targets:
         - internal-site
-    "docs/11-guides/engineering/**":
+    "docs/11-guides/public/**":
       sync_mode: mirrored
-      visibility: internal
-      audience: engineering
+      visibility: public
+      audience: public
       publish: true
       publish_targets:
-        - engineering-site
+        - public-site
   destinations:
     "docs/02-architecture/**":
       hub_path: "hub/03-projects/{project_slug}/02-architecture/"
@@ -105,14 +96,11 @@ sync:
     "docs/07-release/**":
       hub_path: "hub/03-projects/{project_slug}/07-release/"
       project: "{project_slug}"
-    "docs/11-guides/public/**":
-      hub_path: "hub/06-support/public-kb/{project_slug}/"
-      project: "{project_slug}"
     "docs/11-guides/internal/**":
       hub_path: "hub/06-support/internal-kb/{project_slug}/"
       project: "{project_slug}"
-    "docs/11-guides/engineering/**":
-      hub_path: "hub/03-projects/{project_slug}/11-guides/engineering/"
+    "docs/11-guides/public/**":
+      hub_path: "hub/06-support/public-kb/{project_slug}/"
       project: "{project_slug}"
 
 approval:
